@@ -21,4 +21,17 @@ public class Card {
         this.valid = validation;
         return this.valid;
     }
+
+    public long getCardNumber(){
+        return this.card_number;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if (!(obj instanceof Card)){
+            return false;
+        }
+        Card c = (Card) obj;
+        return c == this || this.card_number == c.getCardNumber();
+    }
 }
