@@ -28,4 +28,17 @@ public class Account {
         return this.balance;
     }
 
+    public int getAccountId(){
+        return this.account_id;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if (!(obj instanceof Account)){
+            return false;
+        }
+        Account acc = (Account) obj;
+        return acc.getAccountId() == this.account_id || obj == this;
+    }
+
 }

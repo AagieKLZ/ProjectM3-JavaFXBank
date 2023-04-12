@@ -6,7 +6,7 @@ public class AccountManager {
     private ArrayList<Account> accountList;
 
     public void assign(Account account, User user){
-        user.openAccount();
+        user.openAccount(account);
     }
 
     public Account createAccount(String accountType){

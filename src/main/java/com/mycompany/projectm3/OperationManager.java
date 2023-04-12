@@ -7,23 +7,21 @@ public class OperationManager {
     private ArrayList<Operation> operations;
 
     public OperationManager(){
+
         operations = new ArrayList<Operation>();
     }
-    public void createOperation(Account source, Account target, float amount, HashMap<Integer, Integer> bills){
-        Operation opp;
-        if (bills == null){
-            opp = new TransferOperation(source, target, amount);
-            operations.add(opp);
-        } else if (source == null){
-            opp = new ATMInputOperation(target, amount, bills);
-            operations.add(opp);
-        } else if (target == null){
-            opp = new ATMExtractOperation(source, amount, bills);
-            operations.add(opp);
-        }
+    public void createOperation(String type, Account source, Account target, float amount) {
+        Operation opp = new Operation(type, source, target, amount);
+        this.operations.add(opp);
     }
 
     public ArrayList<Operation> getOperations(Account account){
-        return this.operations;
+        ArrayList<Operation> opps = new ArrayList<Operation>();
+        for (Operation opp : this.operations){
+            if (opp.belongs(account)){
+                opps.add(opp);
+            }
+        }
+        return opps;
     }
 }
