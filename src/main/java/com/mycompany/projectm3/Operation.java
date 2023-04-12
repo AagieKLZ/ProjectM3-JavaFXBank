@@ -8,7 +8,7 @@ public class Operation {
     private final Account source;
     private final Account target;
     private final float amount;
-    private final int timestamp;
+    private final long timestamp;
 
     /**
      * @param inpSource Input account for the operation
