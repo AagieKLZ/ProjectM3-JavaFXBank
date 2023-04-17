@@ -1,4 +1,4 @@
-package com.mycompany.projectm3;
+package com.mycompany.projectm3.lib;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -14,5 +14,11 @@ public class DateCalculator {
         Calendar calendar = Calendar.getInstance();
         Date current = calendar.getTime();
         return current.after(date);
+    }
+
+    public static String timeToString(Date date){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return calendar.get(Calendar.YEAR) + "-" + calendar.get(Calendar.MONTH) + "-" + calendar.get(Calendar.DAY_OF_MONTH);
     }
 }

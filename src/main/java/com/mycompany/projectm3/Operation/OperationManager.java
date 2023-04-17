@@ -1,14 +1,16 @@
-package com.mycompany.projectm3;
+package com.mycompany.projectm3.Operation;
+
+import com.mycompany.projectm3.Account.Account;
+import com.mycompany.projectm3.FileReader.OperationFileReader;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class OperationManager {
     private ArrayList<Operation> operations;
 
     public OperationManager(){
-
-        operations = new ArrayList<Operation>();
+        /* TODO - Read from file */
+        this.operations = new ArrayList<Operation>();
     }
     public void createOperation(String type, Account source, Account target, float amount) {
         Operation opp = new Operation(type, source, target, amount);
@@ -23,5 +25,14 @@ public class OperationManager {
             }
         }
         return opps;
+    }
+
+    public ArrayList<Operation> getOperations(){
+        return this.operations;
+    }
+
+    public void saveOperations(){
+        OperationFileReader operationFileReader = new OperationFileReader();
+        operationFileReader.writeLines(this.operations);
     }
 }

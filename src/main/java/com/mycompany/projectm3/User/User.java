@@ -2,7 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.projectm3;
+package com.mycompany.projectm3.User;
+
+import com.mycompany.projectm3.Account.Account;
+import com.mycompany.projectm3.lib.PasswordHasher;
 
 import java.util.ArrayList;
 
@@ -17,9 +20,9 @@ public class User {
     private ArrayList<Account> accounts;
     private String password;
 
-    public User(String inpName, int inpId){
-        name = inpName;
-        id = inpId;
+    public User(String name, int id) {
+        this.name = name;
+        this.id = id;
     }
 
     public void setPassword(String pw){
@@ -32,7 +35,7 @@ public class User {
     public void closeAccount(int id){
         boolean exists = false;
         for (int i = 0; i < this.accounts.size(); i++){
-            if (this.accounts.get(i).account_id == id){
+            if (this.accounts.get(i).getAccountId() == id){
                 this.accounts.remove(i);
                 break;
             }
@@ -53,10 +56,19 @@ public class User {
         return this.name;
     }
 
+    public int getId(){
+        return this.id;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
     public void setAccounts(ArrayList<Account> accounts)  {
         this.accounts = accounts;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s,%d,%s,%s", this.name, this.id, this.password, this.isLocked);
     }
 }

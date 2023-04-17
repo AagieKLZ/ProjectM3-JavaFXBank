@@ -1,4 +1,4 @@
-package com.mycompany.projectm3;
+package com.mycompany.projectm3.lib;
 
 import java.util.Random;
 public class RandomNumberGenerator {

@@ -1,4 +1,6 @@
-package com.mycompany.projectm3;
+package com.mycompany.projectm3.Bills;
+
+import com.mycompany.projectm3.FileReader.BillFileReader;
 
 import java.util.HashMap;
 
@@ -7,13 +9,18 @@ public class ATMBillManager {
     private int max_available;
 
     public ATMBillManager(){
-        bills = new HashMap<Integer, Integer>();
-        bills.put(10, 45);
-        bills.put(20, 50);
-        bills.put(50, 30);
-        bills.put(100, 15);
-        bills.put(200, 5);
-        max_available = calcMaxAvailable();
+        BillFileReader billFileReader = new BillFileReader();
+        this.bills = billFileReader.readLines();
+        this.max_available = calcMaxAvailable();
+        if (this.max_available == 0){
+            bills.put(10, 45);
+            bills.put(20, 50);
+            bills.put(50, 30);
+            bills.put(100, 15);
+            bills.put(200, 5);
+            this.bills = bills;
+            this.max_available = calcMaxAvailable();
+        }
     }
 
     public HashMap<Integer, Integer> getBills(){
@@ -25,7 +32,6 @@ public class ATMBillManager {
             return bills.get(amount);
         }
         return -1;
-
     }
 
     public int extractBill(int amount){
@@ -50,7 +56,15 @@ public class ATMBillManager {
         for (int key : bills.keySet()) {
             total += bills.get(key);
         }
-        this.max_available = total;
         return total;
+    }
+
+    public int getMaxAvailable(){
+        return max_available;
+    }
+
+    public void saveBills(){
+        BillFileReader billFileReader = new BillFileReader();
+        billFileReader.writeLines(this.bills);
     }
 }

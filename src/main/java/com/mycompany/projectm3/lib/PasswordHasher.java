@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.projectm3;
+package com.mycompany.projectm3.lib;
 
 /**
  *
@@ -10,7 +10,11 @@ package com.mycompany.projectm3;
  */
 public class PasswordHasher {
     public static String hash(String input){
-        return "";
+        /* TODO */
+        return input;
     }
-    public static boolean compare(String input, String hashed) { return false;}
+    public static boolean compare(String input, String hashed) {
+        /* TODO */
+        return false;
+    }
 }

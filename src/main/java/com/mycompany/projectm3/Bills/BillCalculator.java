@@ -1,11 +1,11 @@
-package com.mycompany.projectm3;
+package com.mycompany.projectm3.Bills;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
 public class BillCalculator {
-    public HashMap<Integer, Integer> calculate(HashMap<Integer, Integer> availableBills, int amount){
+    public static HashMap<Integer, Integer> calculate(HashMap<Integer, Integer> availableBills, int amount){
         HashMap<Integer, Integer> usedBills = new HashMap<>();
         ArrayList<Integer> billValues = new ArrayList<>(availableBills.keySet());
         billValues.sort(Collections.reverseOrder());
