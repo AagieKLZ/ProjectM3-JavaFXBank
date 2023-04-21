@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Represents an ATM account
  * */
-public class Account {
+abstract class Account {
     protected int account_id;
     protected float interest;
     protected float balance;
