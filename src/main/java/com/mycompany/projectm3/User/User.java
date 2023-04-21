@@ -10,7 +10,7 @@ import com.mycompany.projectm3.lib.PasswordHasher;
 import java.util.ArrayList;
 
 /**
- *
+ * Represents a user of the system.
  * @author alumne
  */
 public class User {
@@ -20,18 +20,36 @@ public class User {
     private ArrayList<Account> accounts;
     private String password;
 
+    /**
+     * Creates a new user.
+     * @param name
+     * @param id
+     */
     public User(String name, int id) {
         this.name = name;
         this.id = id;
     }
 
+    /**
+     * Sets the password of the user.
+     * @param pw
+     */
     public void setPassword(String pw){
         this.password = PasswordHasher.hash(pw);
     }
 
+    /**
+     * Creates a new account for the user.
+     * @param acc
+     */
     public void openAccount(Account acc){
         this.accounts.add(acc);
     }
+
+    /**
+     * Closes an account of the user.
+     * @param id
+     */
     public void closeAccount(int id){
         boolean exists = false;
         for (int i = 0; i < this.accounts.size(); i++){
@@ -41,32 +59,81 @@ public class User {
             }
         }
     }
+
+    /**
+     * Locks the user access.
+     */
     public void lock() {
         this.isLocked = true;
     }
+
+    /**
+     * Unlocks the user access.
+     */
     public void unlock() {
         this.isLocked = false;
     }
 
+    /**
+     * Gets the password of the user.
+     * @return String password
+     */
     public String getPassword() {
         return this.password;
     }
 
+    /**
+     * Returns the name of the user.
+     * @return
+     */
     public String getName(){
         return this.name;
     }
 
+    /**
+     * Returns the id of the user.
+     * @return int id
+     */
     public int getId(){
         return this.id;
     }
 
+    /**
+     * Sets the name of the user.
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
+
+    /**
+     * Sets the accounts of the user.
+     * @param accounts
+     */
     public void setAccounts(ArrayList<Account> accounts)  {
         this.accounts = accounts;
     }
 
+    /**
+     * Returns if the user is locked.
+     * @return boolean
+     */
+    public boolean isLocked() {
+        return isLocked;
+    }
+
+    /**
+     * Returns the accounts of the user.
+     * @return ArrayList<Account>
+     */
+    public ArrayList<Account> getAccounts() {
+        return accounts;
+    }
+
+    /**
+     * Returns the string representation of the user.
+     * @return String
+     */
     @Override
     public String toString() {
         return String.format("%s,%d,%s,%s", this.name, this.id, this.password, this.isLocked);
