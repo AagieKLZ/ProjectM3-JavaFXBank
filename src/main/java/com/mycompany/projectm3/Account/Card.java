@@ -5,6 +5,10 @@ import com.mycompany.projectm3.lib.RandomNumberGenerator;
 
 import java.util.Date;
 
+/**
+ * @author Carlos Carpio
+ * Represents a card that can be used to access an account
+ */
 public class Card {
     private long cardNumber;
     private int securityNumber;
@@ -13,6 +17,11 @@ public class Card {
     private int PIN;
     private boolean valid = true;
 
+    /**
+     * Creates a new card with a random card number and security number. The expiration date is set to one year from the current date. The card is linked to the account that is passed in.
+     * @param chosenPin the PIN that the user wants to use
+     * @param account the account that the card will be linked to
+     */
     public Card(int chosenPin, CurrentAccount account){
         this.PIN = chosenPin;
         this.account = account;
@@ -21,6 +30,14 @@ public class Card {
         this.expirationDate = DateCalculator.addYears(1);
     }
 
+    /**
+     * Constructor for a card that is being loaded from a file
+     * @param cardNumber
+     * @param securityNumber
+     * @param expirationDate
+     * @param PIN
+     * @param valid
+     */
     public Card(long cardNumber, int securityNumber, Date expirationDate, int PIN, boolean valid) {
         this.cardNumber = cardNumber;
         this.securityNumber = securityNumber;
@@ -29,36 +46,69 @@ public class Card {
         this.valid = valid;
     }
 
+    /**
+     * Sets the security number of the card
+     * @param securityNumber
+     */
     public void setSecurityNumber(int securityNumber){
         this.securityNumber = securityNumber;
     }
 
+    /**
+     * Sets the card number of the card
+     * @param cardNumber
+     */
     public void setCardNumber(long cardNumber) {
         this.cardNumber = cardNumber;
     }
 
+    /**
+     * Sets the PIN of the card
+     * @param PIN
+     */
     public void setPIN(int PIN) {
         this.PIN = PIN;
     }
 
+    /**
+     * Sets the validity of the card
+     * @param valid
+     */
     public void setValid(boolean valid) {
         this.valid = this.isValid();
     }
 
+    /**
+     * Sets the expiration date of the card
+     * @param expirationDate
+     */
     public void setExpirationDate(Date expirationDate) {
         this.expirationDate = expirationDate;
     }
 
+    /**
+     * Checks if the card is valid by checking if the expiration date is valid
+     * @return true if the card is valid, false otherwise
+     */
     public boolean isValid(){
         boolean validation = DateCalculator.isValid(this.expirationDate);
         this.valid = validation;
         return this.valid;
     }
 
+    /**
+     * Returns the card number
+     * @return the card number
+     */
     public long getCardNumber(){
         return this.cardNumber;
     }
 
+    /**
+     * Equals method for a card
+     * @param obj
+     * @return true if the card numbers are the same, false otherwise
+     */
     @Override
     public boolean equals(Object obj){
         if (!(obj instanceof Card)){
@@ -68,6 +118,10 @@ public class Card {
         return c == this || this.cardNumber == c.getCardNumber();
     }
 
+    /**
+     * Returns a string representation of the card to be saved in a file
+     * @return a string representation of the card
+     */
     @Override
     public String toString() {
         return String.format("%d,%d,%s,%d,%d", this.cardNumber, this.securityNumber, DateCalculator.timeToString(this.expirationDate), this.PIN, this.account.getAccountId());
