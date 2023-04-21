@@ -4,13 +4,24 @@ import com.mycompany.projectm3.Operation.Operation;
 
 import java.util.ArrayList;
 
-public class OperationFileReader extends FileReader {
-    private final String path = "operations.json";
 
+/**
+ * Reads and writes from the operations.csv file
+ */
+public class OperationFileReader extends FileReader {
+    private final String path = "operations.csv";
+
+    /**
+     * Constructor
+     */
     public OperationFileReader() {
         super();
     }
 
+    /**
+     * Reads the lines from the file and returns an ArrayList of operations
+     * @return ArrayList of operations from the file
+     */
     public ArrayList<Operation> readLines(){
         ArrayList<String> lines = this.read();
         ArrayList<Operation> operations = new ArrayList<>();
@@ -20,6 +31,10 @@ public class OperationFileReader extends FileReader {
         return null;
     }
 
+    /**
+     * Writes the operations to the file
+     * @param operations
+     */
     public void writeLines(ArrayList<Operation> operations){
         ArrayList<String> lines = new ArrayList<>();
         for (Operation operation : operations){
