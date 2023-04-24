@@ -27,7 +27,7 @@
             <Button fx:id="loginLink1" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#gotoLogin" prefHeight="39.0" prefWidth="147.0" style="-fx-background-color: #3423A6; -fx-text-fill: white; -fx-font-weight: bold; -fx-text-alignment: LEFT;" text="Inserta Tarjeta" GridPane.rowIndex="2" />
             <ImageView fitHeight="57.0" fitWidth="280.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <image>
-                  <Image url="@../../../../../../../../Baixades/fxbank-removebg-preview.png" />
+                  <Image url="@../../../../java/com/mycompany/assets/fxbank-removebg-preview.png" />
                </image>
             </ImageView>
          </children>

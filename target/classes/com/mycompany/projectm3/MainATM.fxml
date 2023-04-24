@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectm3.MainATMController">
     <children>
     <ImageView fitHeight="24.0" fitWidth="125.0" layoutX="8.0" layoutY="8.0">
          <image>
-            <Image url="@../../../../../../../../Baixades/fxbank-removebg-preview.png" />
+            <Image url="@../../../assets/fxbank-removebg-preview.png" />
          </image>
       </ImageView>
       <VBox alignment="TOP_CENTER" layoutX="34.0" layoutY="285.0" spacing="10.0">

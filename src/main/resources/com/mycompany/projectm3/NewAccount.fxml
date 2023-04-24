@@ -11,12 +11,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectm3.NewAccountController">
    <children>
       <ImageView fitHeight="24.0" fitWidth="125.0" layoutX="8.0" layoutY="8.0">
          <image>
-            <Image url="@../../../../../../../../Baixades/fxbank-removebg-preview.png" />
+            <Image url="@../../../assets/fxbank-removebg-preview.png" />
          </image>
       </ImageView>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="113.0" text="Tipo de cuenta" />

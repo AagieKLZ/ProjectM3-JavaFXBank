@@ -17,19 +17,19 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <TextField layoutX="211.0" layoutY="127.0" prefHeight="24.0" prefWidth="210.0" promptText="Nombre">
+      <TextField id="username" fx:id="username" layoutX="211.0" layoutY="127.0" prefHeight="24.0" prefWidth="210.0" promptText="Nombre">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <TextField layoutX="211.0" layoutY="192.0" prefHeight="24.0" prefWidth="210.0" promptText="*******">
+      <TextField id="password" fx:id="password" layoutX="211.0" layoutY="192.0" prefHeight="24.0" prefWidth="210.0" promptText="*******">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
       <Label layoutX="211.0" layoutY="173.0" text="Contraseña" />
       <Label layoutX="211.0" layoutY="108.0" text="Nombre de usuario" />
-      <Button layoutX="211.0" layoutY="240.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="210.0" style="-fx-background-color: #3423A6; -fx-font-weight: bold;" text="Iniciar Sesion" textFill="WHITE">
+      <Button layoutX="211.0" layoutY="240.0" mnemonicParsing="false" onAction="#logIn" prefHeight="24.0" prefWidth="210.0" style="-fx-background-color: #3423A6; -fx-font-weight: bold;" text="Iniciar Sesion" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
@@ -49,7 +49,7 @@
       <Label layoutX="307.0" layoutY="275.0" prefHeight="16.0" prefWidth="15.0" style="-fx-background-color: inherit;" text=" o" />
       <ImageView fitHeight="24.0" fitWidth="125.0" layoutX="8.0" layoutY="8.0">
          <image>
-            <Image url="@../assets/fxbank-removebg-preview.png." />
+            <Image url="@../../../assets/fxbank-removebg-preview.png" />
          </image>
       </ImageView>
    </children>
