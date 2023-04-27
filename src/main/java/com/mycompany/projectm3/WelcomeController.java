@@ -41,7 +41,12 @@ public class WelcomeController implements Initializable {
     
     @FXML
     protected void gotoSignup() throws IOException{
-        Navigator.gotoPage("LogIn", signupLink);
+        Navigator.gotoPage("SignUp", signupLink);
+    }
+    
+    @FXML
+    protected void gotoCard() throws IOException{
+        Navigator.gotoPage("InsertCard", cardLink);
     }
 
     @FXML
@@ -49,5 +54,8 @@ public class WelcomeController implements Initializable {
     
     @FXML
     Button signupLink;
+    
+    @FXML
+    Button cardLink;
     
 }

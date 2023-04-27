@@ -43,8 +43,8 @@ public class UserManager {
      * @param name
      * @param password
      */
-    public void createUser(String name, String password){
-        User user = new User(name, userList.size()+1);
+    public void createUser(String email, String name, String password){
+        User user = new User(email, name, userList.size()+1);
         user.setPassword(password);
         this.userList.add(user);
     }

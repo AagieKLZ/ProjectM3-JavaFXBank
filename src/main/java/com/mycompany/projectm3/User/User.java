@@ -17,15 +17,18 @@ public class User {
     private String name;
     private int id;
     private boolean isLocked  = false;
+    private String email;
     private ArrayList<Account> accounts;
     private String password;
 
     /**
-     * Creates a new user.
+     * Creates a new user
+     * @param email.
      * @param name
      * @param id
      */
-    public User(String name, int id) {
+    public User(String email, String name, int id) {
+        this.email = email;
         this.name = name;
         this.id = id;
     }
@@ -113,6 +116,23 @@ public class User {
     public void setAccounts(ArrayList<Account> accounts)  {
         this.accounts = accounts;
     }
+    
+    /**
+     * Gets the user email
+     * @return email
+     */
+    public String getEmail() {
+        return email;
+    }
+    
+    /**
+     * 
+     * @param email 
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
 
     /**
      * Returns if the user is locked.
@@ -136,6 +156,6 @@ public class User {
      */
     @Override
     public String toString() {
-        return String.format("%s,%d,%s,%s", this.name, this.id, this.password, this.isLocked);
+        return String.format("%s,%s,%d,%s,%s", this.email, this.name, this.id, this.password, this.isLocked);
     }
 }

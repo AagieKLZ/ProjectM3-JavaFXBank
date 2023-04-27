@@ -10,30 +10,44 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 /**
  * FXML Controller class
  *
  * @author alumne
  */
-public class MainATMController implements Initializable {
+public class SignUpController implements Initializable {
 
+
+    @FXML
+    private Button backBtn;
+    @FXML
+    private TextField nameInput;
+    @FXML
+    private TextField emailInput;
+    @FXML
+    private PasswordField pwInput;
+    @FXML
+    private Button signupBtn;
+    @FXML
+    private Button loginBtn;
     /**
      * Initializes the controller class.
      */
-    @FXML
-    Button test;
-
-    @FXML
-    Button checkMovements;
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
+    }    
     
-    public void gotoMovements() throws IOException {
-        Navigator.gotoPage("Movements", checkMovements);
+    @FXML
+    private void gotoHome() throws IOException {
+        Navigator.gotoPage("welcome", backBtn);
     }
-    
+
+    @FXML
+    private void gotoLogin() throws IOException {
+        Navigator.gotoPage("LogIn", loginBtn);
+    }
+
 }

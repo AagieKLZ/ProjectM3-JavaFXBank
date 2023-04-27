@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #D6D6D6;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectm3.InsertCardController">
+<AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #D6D6D6;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectm3.InsertCardController">
    <children>
       <ImageView fitHeight="24.0" fitWidth="125.0" layoutX="8.0" layoutY="8.0">
          <image>
             <Image url="@../../../assets/fxbank-removebg-preview.png" />
          </image>
       </ImageView>
-      <VBox alignment="CENTER" fillWidth="false" layoutX="2.0" layoutY="53.0" prefHeight="294.0" prefWidth="593.0" spacing="35.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
+      <VBox alignment="CENTER" fillWidth="false" layoutX="25.0" layoutY="93.0" prefHeight="294.0" prefWidth="593.0" spacing="35.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
          <children>
             <Label text="Iniciar Sesion">
                <font>
@@ -31,7 +31,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="24.0" prefWidth="352.0" />
+                  <TextField fx:id="cardNumber" prefHeight="24.0" prefWidth="352.0" />
                </children>
             </VBox>
             <VBox>
@@ -41,11 +41,12 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <PasswordField />
+                  <PasswordField fx:id="cardPIN" />
                </children>
             </VBox>
-            <Button mnemonicParsing="false" style="-fx-background-color: #3423A6; -fx-font-weight: bold;" text="Iniciar Sesion" textFill="WHITE" />
+            <Button mnemonicParsing="false" onAction="#logIn" style="-fx-background-color: #3423A6; -fx-font-weight: bold;" text="Iniciar Sesion" textFill="WHITE" />
          </children>
       </VBox>
+      <Button fx:id="backBtn" layoutX="14.0" layoutY="56.0" mnemonicParsing="false" onAction="#gotoHome" style="-fx-background-color: #3423A6; -fx-text-fill: white; -fx-font-weight: bold;" text="Volver" />
    </children>
 </AnchorPane>

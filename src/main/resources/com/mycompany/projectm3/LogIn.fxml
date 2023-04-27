@@ -40,7 +40,7 @@
          </cursor>
       </Label>
       <Separator layoutX="197.0" layoutY="283.0" prefHeight="1.0" prefWidth="255.0" />
-      <Button layoutX="209.0" layoutY="299.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="210.0" style="-fx-background-color: #3423A6; -fx-font-weight: bold;" text="Crear Cuenta" textFill="WHITE">
+      <Button fx:id="signupBtn" layoutX="209.0" layoutY="299.0" mnemonicParsing="false" onAction="#gotoSignup" prefHeight="24.0" prefWidth="210.0" style="-fx-background-color: #3423A6; -fx-font-weight: bold;" text="Crear Cuenta" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
@@ -52,5 +52,6 @@
             <Image url="@../../../assets/fxbank-removebg-preview.png" />
          </image>
       </ImageView>
+      <Button fx:id="backBtn" layoutX="14.0" layoutY="56.0" mnemonicParsing="false" onAction="#gotoHome" style="-fx-background-color: #3423A6; -fx-text-fill: white; -fx-font-weight: bold;" text="Volver" />
    </children>
 </AnchorPane>

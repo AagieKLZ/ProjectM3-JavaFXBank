@@ -1,5 +1,6 @@
 package com.mycompany.projectm3.lib;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -11,9 +12,10 @@ public class TimeHandler {
      * @param timestamp
      * @return String with the timestamp in the format YYYY-MM-DDTHH:MM:SS
      */
-    public static String timestampToString(int timestamp){
-        // TODO
-        return "";
+    public static String timestampToString(long timestamp) {
+        Date date = new Date(timestamp);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return sdf.format(date);
     }
 
     /**

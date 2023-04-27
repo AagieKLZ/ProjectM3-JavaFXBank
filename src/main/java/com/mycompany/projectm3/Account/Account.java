@@ -13,7 +13,7 @@ public class Account {
     protected int account_id;
     protected float interest;
     protected float balance;
-    protected ArrayList<Operation> operations;
+    protected ArrayList<Operation> operations = new ArrayList<>();
     protected User owner;
     protected int ownerId;
 
@@ -52,7 +52,7 @@ public class Account {
      * Registers an operation in the account
      * @param operation
      */
-    public void registerOperation(Operation operation){
+    public void addOperation(Operation operation){
         this.operations.add(operation);
     }
 
@@ -60,7 +60,7 @@ public class Account {
      * Returns the account movements
      * @return the account movements
      */
-    public ArrayList<Operation> getMovements(){
+    public ArrayList<Operation> getOperations(){
         /* TODO */
         return new ArrayList<Operation>();
     }
