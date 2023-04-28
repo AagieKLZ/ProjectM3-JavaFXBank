@@ -70,6 +70,10 @@ public class Card {
         this.PIN = PIN;
     }
 
+    public int getSecurityNumber() {
+        return securityNumber;
+    }
+
     /**
      * Sets the validity of the card
      * @param valid
@@ -94,6 +98,10 @@ public class Card {
         boolean validation = DateCalculator.isValid(this.expirationDate);
         this.valid = validation;
         return this.valid;
+    }
+
+    public Date getExpirationDate() {
+        return expirationDate;
     }
 
     /**

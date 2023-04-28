@@ -57,7 +57,7 @@ public class MainATMController implements Initializable {
     }
     
     public void gotoCreateCard() throws IOException {
-        Navigator.gotoPage("NewCard", createCard);
+        Navigator.gotoPage("CreateCard", createCard);
     }
     
     public void gotoWithdraw() throws IOException {
