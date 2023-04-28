@@ -23,7 +23,7 @@
       </VBox>
       <HBox alignment="CENTER" layoutX="21.0" layoutY="113.0" prefHeight="71.0" prefWidth="600.0" spacing="20.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="240.0" style="-fx-background-color: white; -fx-text-fill: #3423A6; -fx-border-color: #3423A6; -fx-border-radius: 10px;" text="Consultar Cuentas" />
+            <Button fx:id="checkAccs" mnemonicParsing="false" onAction="#gotoAccounts" prefHeight="57.0" prefWidth="240.0" style="-fx-background-color: white; -fx-text-fill: #3423A6; -fx-border-color: #3423A6; -fx-border-radius: 10px;" text="Consultar Cuentas" />
             <Button fx:id="checkMovements" mnemonicParsing="false" onAction="#gotoMovements" prefHeight="57.0" prefWidth="240.0" style="-fx-background-color: white; -fx-text-fill: #3423A6; -fx-border-color: #3423A6; -fx-border-radius: 10px;" text="Consultar Movimientos" />
          </children>
       </HBox>
@@ -36,14 +36,15 @@
       <Button layoutX="273.0" layoutY="7.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-border-color: #E54210; -fx-border-radius: 5px; -fx-text-fill: #E54210; -fx-font-weight: 500;" text="Solicitar Baja del Servicio" />
       <HBox alignment="CENTER" layoutY="197.0" prefHeight="116.0" prefWidth="640.0" spacing="25.0" AnchorPane.bottomAnchor="167.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="197.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="240.0" style="-fx-text-fill: white; -fx-background-color: #3423A6; -fx-font-size: 15;" text="Nueva Cuenta" />
-            <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="240.0" style="-fx-text-fill: white; -fx-background-color: #3423A6; -fx-font-size: 15;" text="Nueva Tarjeta" />
+            <Button fx:id="createAcc" mnemonicParsing="false" onAction="#gotoCreateAccount" prefHeight="55.0" prefWidth="240.0" style="-fx-text-fill: white; -fx-background-color: #3423A6; -fx-font-size: 15;" text="Nueva Cuenta" />
+            <Button fx:id="createCard" mnemonicParsing="false" onAction="#gotoCreateCard" prefHeight="55.0" prefWidth="240.0" style="-fx-text-fill: white; -fx-background-color: #3423A6; -fx-font-size: 15;" text="Nueva Tarjeta" />
          </children>
       </HBox>
-      <HBox layoutX="169.0" layoutY="376.0" spacing="25.0">
+      <HBox layoutX="87.0" layoutY="377.0" spacing="25.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="139.0" style="-fx-background-color: white; -fx-text-fill: #3423A6; -fx-border-color: #3423A6; -fx-border-radius: 10px;" text="Extraer" />
-            <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="139.0" style="-fx-background-color: white; -fx-text-fill: #3423A6; -fx-border-color: #3423A6; -fx-border-radius: 10px;" text="Ingresar" />
+            <Button fx:id="withdrawBtn" mnemonicParsing="false" onAction="#gotoWithdraw" prefHeight="57.0" prefWidth="139.0" style="-fx-background-color: white; -fx-text-fill: #3423A6; -fx-border-color: #3423A6; -fx-border-radius: 10px;" text="Extraer" />
+            <Button fx:id="transferBtn" mnemonicParsing="false" onAction="#gotoTransfer" prefHeight="57.0" prefWidth="139.0" style="-fx-background-color: white; -fx-text-fill: #3423A6; -fx-border-color: #3423A6; -fx-border-radius: 10px;" text="Transferir" />
+            <Button fx:id="insertBtn" mnemonicParsing="false" onAction="#gotoInsert" prefHeight="57.0" prefWidth="139.0" style="-fx-background-color: white; -fx-text-fill: #3423A6; -fx-border-color: #3423A6; -fx-border-radius: 10px;" text="Ingresar" />
          </children>
       </HBox>
       <Label layoutX="242.0" layoutY="322.0" text="Operaciones" textAlignment="CENTER">

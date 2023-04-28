@@ -22,10 +22,22 @@ public class MainATMController implements Initializable {
      * Initializes the controller class.
      */
     @FXML
-    Button test;
-
-    @FXML
     Button checkMovements;
+    
+    @FXML
+    Button checkAccs;
+    
+    @FXML
+    Button createAcc;
+    
+    @FXML
+    Button withdrawBtn;
+    
+    @FXML
+    Button insertBtn;
+    
+    @FXML
+    Button createCard;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -34,6 +46,30 @@ public class MainATMController implements Initializable {
     
     public void gotoMovements() throws IOException {
         Navigator.gotoPage("Movements", checkMovements);
+    }
+    
+    public void gotoCreateAccount() throws IOException {
+        Navigator.gotoPage("NewAccount", createAcc);
+    }
+    
+    public void gotoAccounts() throws IOException{
+        Navigator.gotoPage("Accounts", checkAccs);
+    }
+    
+    public void gotoCreateCard() throws IOException {
+        Navigator.gotoPage("NewCard", createCard);
+    }
+    
+    public void gotoWithdraw() throws IOException {
+        Navigator.gotoPage("Withdraw", withdrawBtn);
+    }
+    
+    public void gotoInsert() throws IOException {
+        Navigator.gotoPage("Insert", insertBtn);
+    }
+
+    public void gotoTransfer() throws IOException {
+        Navigator.gotoPage("Transfer", insertBtn);
     }
     
 }
