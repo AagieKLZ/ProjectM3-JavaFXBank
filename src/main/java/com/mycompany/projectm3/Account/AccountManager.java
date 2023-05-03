@@ -2,6 +2,7 @@ package com.mycompany.projectm3.Account;
 
 import com.mycompany.projectm3.FileReader.AccountFileReader;
 import com.mycompany.projectm3.User.User;
+import com.mycompany.projectm3.lib.RandomNumberGenerator;
 
 import java.util.ArrayList;
 
@@ -41,11 +42,11 @@ public class AccountManager {
         Account acc;
         switch (accountType.toLowerCase()){
             case "current":
-                acc = new CurrentAccount(1, 0.0F, 1);
+                acc = new CurrentAccount(1, 0.0F, 1, RandomNumberGenerator.generateCardNumber());
                 this.accountList.add(acc);
                 return acc;
             case "savings":
-                acc = new SavingAccount(1, 0, 1);
+                acc = new SavingAccount(1, 0, 1, RandomNumberGenerator.generateCardNumber());
                 this.accountList.add(acc);
                 return acc;
             default:

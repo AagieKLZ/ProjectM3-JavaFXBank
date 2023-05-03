@@ -3,6 +3,7 @@ package com.mycompany.projectm3.Account;
 import com.mycompany.projectm3.FileReader.UserFileReader;
 import com.mycompany.projectm3.Operation.Operation;
 import com.mycompany.projectm3.User.User;
+import com.mycompany.projectm3.lib.RandomNumberGenerator;
 
 import java.util.ArrayList;
 
@@ -11,6 +12,7 @@ import java.util.ArrayList;
  * */
 public class Account {
     protected int account_id;
+    protected long accNumber;
     protected float interest;
     protected float balance;
     protected ArrayList<Operation> operations = new ArrayList<>();
@@ -27,6 +29,7 @@ public class Account {
         this.account_id = account_id;
         this.balance = balance;
         this.owner = owner;
+        this.accNumber = RandomNumberGenerator.generateCardNumber();
     }
 
     /**
@@ -35,10 +38,11 @@ public class Account {
      * @param balance the account balance
      * @param ownerId the owner id
      * */
-    public Account(int account_id, float balance, int ownerId){
+    public Account(int account_id, float balance, int ownerId, long accNumber){
         this.account_id = account_id;
         this.balance = balance;
         this.ownerId = ownerId;
+        this.accNumber = accNumber;
         ArrayList<User> users = new UserFileReader().readLines();
         for (User user : users){
             if (user.getId() == ownerId){
@@ -46,6 +50,10 @@ public class Account {
                 break;
             }
         }
+    }
+
+    public long getAccNumber() {
+        return accNumber;
     }
 
     /**

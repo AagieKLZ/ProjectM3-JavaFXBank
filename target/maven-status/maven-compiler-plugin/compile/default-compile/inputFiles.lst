@@ -1,4 +1,5 @@
 /home/alumne/NetBeansProjects/ProjectM3/src/main/java/com/mycompany/projectm3/User/UserManager.java
+/home/alumne/NetBeansProjects/ProjectM3/src/main/java/com/mycompany/projectm3/CreateCardController.java
 /home/alumne/NetBeansProjects/ProjectM3/src/main/java/com/mycompany/projectm3/Account/CardManager.java
 /home/alumne/NetBeansProjects/ProjectM3/src/main/java/com/mycompany/projectm3/User/User.java
 /home/alumne/NetBeansProjects/ProjectM3/src/main/java/com/mycompany/projectm3/Account/AccountManager.java
@@ -25,6 +26,7 @@
 /home/alumne/NetBeansProjects/ProjectM3/src/main/java/com/mycompany/projectm3/lib/RandomNumberGenerator.java
 /home/alumne/NetBeansProjects/ProjectM3/src/main/java/com/mycompany/projectm3/Account/CurrentAccount.java
 /home/alumne/NetBeansProjects/ProjectM3/src/main/java/com/mycompany/projectm3/NewAccountController.java
+/home/alumne/NetBeansProjects/ProjectM3/src/main/java/com/mycompany/projectm3/InsertController.java
 /home/alumne/NetBeansProjects/ProjectM3/src/main/java/com/mycompany/projectm3/FileReader/FileReader.java
 /home/alumne/NetBeansProjects/ProjectM3/src/main/java/com/mycompany/projectm3/App.java
 /home/alumne/NetBeansProjects/ProjectM3/src/main/java/com/mycompany/projectm3/FileReader/AccountFileReader.java
@@ -34,4 +36,5 @@
 /home/alumne/NetBeansProjects/ProjectM3/src/main/java/com/mycompany/projectm3/Account/SavingAccount.java
 /home/alumne/NetBeansProjects/ProjectM3/src/main/java/com/mycompany/projectm3/lib/PasswordHasher.java
 /home/alumne/NetBeansProjects/ProjectM3/src/main/java/com/mycompany/projectm3/FileReader/OperationFileReader.java
+/home/alumne/NetBeansProjects/ProjectM3/src/main/java/com/mycompany/projectm3/TransferController.java
 /home/alumne/NetBeansProjects/ProjectM3/src/main/java/com/mycompany/projectm3/lib/DateCalculator.java

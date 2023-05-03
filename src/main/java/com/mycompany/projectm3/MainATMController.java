@@ -6,10 +6,12 @@ package com.mycompany.projectm3;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -38,10 +40,32 @@ public class MainATMController implements Initializable {
     
     @FXML
     Button createCard;
+
+    @FXML
+    AnchorPane rootPane;
+
+    ArrayList<String> keys = new ArrayList<>();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        rootPane.setOnKeyPressed(e -> {
+            ArrayList<String> keysArray = new ArrayList<>();
+            keysArray.add("UP");
+            keysArray.add("LEFT");
+            keysArray.add("DOWN");
+            keysArray.add("RIGHT");
+            keys.add(e.getCode().toString());
+            if (keys.size() > 4) {
+                keys.remove(0);
+                /**
+                if (keys.get(0) == "UP" && keys.get(1) == "LEFT" && keys.get(2) == "DOWN" && keys.get(3) == "RIGHT"){
+                    System.out.println("You have unlocked the secret menu");
+                }*/
+                if (keysArray.equals(keys)){
+                    System.out.println("You have unlocked the secret menu");
+                }
+            }
+        });
     }
     
     public void gotoMovements() throws IOException {

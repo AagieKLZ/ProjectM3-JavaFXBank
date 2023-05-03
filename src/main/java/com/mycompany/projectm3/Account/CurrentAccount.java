@@ -26,8 +26,8 @@ public class CurrentAccount extends Account {
      * @param balance
      * @param ownerId
      */
-    public CurrentAccount(int account_id, float balance, int ownerId){
-        super(account_id, balance, ownerId);
+    public CurrentAccount(int account_id, float balance, int ownerId, long accNumber){
+        super(account_id, balance, ownerId, accNumber);
         this.cards = new ArrayList<>();
     }
 
@@ -51,5 +51,9 @@ public class CurrentAccount extends Account {
                 break;
             }
         }
+    }
+
+    public ArrayList<Card> getCards() {
+        return cards;
     }
 }
