@@ -54,6 +54,10 @@ public class Account {
         }
     }
 
+    public User getOwner(){
+        return this.owner;
+    }
+
     public long getAccNumber() {
         return accNumber;
     }

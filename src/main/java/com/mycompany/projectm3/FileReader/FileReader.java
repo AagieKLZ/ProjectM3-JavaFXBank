@@ -23,7 +23,6 @@ abstract class FileReader {
      * @return each line of the file
      */
     public ArrayList<String> read(){
-        System.out.println("File: " + file.getName());
         ArrayList<String> lines = new ArrayList<String>();
         try {
             Scanner scanner = new Scanner(this.file);
@@ -44,21 +43,17 @@ abstract class FileReader {
      */
     public void write(ArrayList<String> lines){
         ArrayList<String> currentLines = new ArrayList<>();
-        System.out.println("File: " + file.getAbsolutePath());
         for(String line : lines){
             currentLines.add(line);
         }
-        System.out.println(currentLines);
         try {
             Writer writer = new FileWriter(this.file);
             for (String line : currentLines){
 
-                System.out.println(line);
                 writer.write(line + "\n");
             }
             writer.close();
         } catch (Exception e) {
-            System.out.println(e.getMessage() + e.getStackTrace());
             System.out.println("Error writing to file");
         }
     }

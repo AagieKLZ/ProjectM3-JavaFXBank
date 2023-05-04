@@ -52,6 +52,10 @@ public class LogInController implements Initializable {
         System.out.println("Log in");
         System.out.println("Username: " + username.getText());
         System.out.println("Password: " + password.getText());
+        if (App.atm.userManager.getAttempts(username.getText()) <= 0){
+            errLabel.setText("Usuario bloqueado");
+            return;
+        }
         if (username.getText() == "" || username.getText() == ""){
             errLabel.setText("Usuario o contraseña no válidos");
         } else {
@@ -60,7 +64,10 @@ public class LogInController implements Initializable {
                 errLabel.setText("Usuario o contraseña no válidos");
                 return;
             }
-//            App.atm.setUser(new User(username.getText(), username.getText(), 5));
+            if (user.isLocked()){
+                errLabel.setText("Usuario bloqueado");
+                return;
+            }
 
             ArrayList<Account> accounts = App.atm.accManager.getAccountList();
             ArrayList<Account> userAccounts = new ArrayList<>();
@@ -71,13 +78,8 @@ public class LogInController implements Initializable {
                     userAccounts.add(account);
                 }
             }
-            for (Account account : userAccounts) {
-                System.out.println("hhh" + account);
-            }
-
             user.setAccounts(userAccounts);
             App.atm.setUser(user);
-            System.out.println("User accounts" + user.getAccounts() + " Accs: " + userAccounts);
             Navigator.gotoPage("MainATM", signupBtn);
         }
     }

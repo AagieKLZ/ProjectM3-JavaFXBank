@@ -16,7 +16,7 @@ public class AccountFileReader extends FileReader {
      * Constructor
      */
     public AccountFileReader() {
-        super("accounts.csv");
+        super("data/accounts.csv");
     }
 
     /**
@@ -36,14 +36,11 @@ public class AccountFileReader extends FileReader {
             Account acc;
             if (acc_type.equals("Savings")){
                 acc = new SavingAccount(account_id, balance, user_id, acc_num);
-                System.out.println("Savings account created - User ID: " + user_id);
             } else {
                 acc = new CurrentAccount(account_id, balance, user_id, acc_num);
-                System.out.println("Account created - User ID: " + user_id);
             }
             accounts.add(acc);
         }
-        System.out.println(accounts);
         return accounts;
     }
 

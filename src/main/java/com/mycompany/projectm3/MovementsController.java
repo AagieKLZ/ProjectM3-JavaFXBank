@@ -86,7 +86,7 @@ public class MovementsController implements Initializable {
                 image = new Image("file:src/main/resources/assets/double-arrow.png");
             }
                 ImageView imageView = new ImageView(image);
-                Label oppTypeLabel = new Label(opptype == "withdraw" ? "Extracción" : opptype == "insert" ? "Depósito" : "Transferencia");
+                Label oppTypeLabel = new Label(opptype.equals("withdraw") ? "Extracción" : opptype.equals("insert") ? "Ingreso" : "Transferencia");
                 Label amountLabel = new Label(String.valueOf(amount) + "€");
                 Label timestampLabel = new Label(TimeHandler.timestampToString(timestamp));
 

@@ -13,7 +13,7 @@ public class BillFileReader extends FileReader{
      * Constructor
      */
     public BillFileReader() {
-        super("bills.csv");
+        super("data/bills.csv");
     }
 
     /**
@@ -22,14 +22,11 @@ public class BillFileReader extends FileReader{
      */
     public HashMap<Integer, Integer> readLines(){
         ArrayList<String> lines = this.read();
-        System.out.println("Lines: " + lines);
         HashMap<Integer, Integer> bills = new HashMap<>();
         for (int i = 1; i < lines.size(); i++) { // start loop at index 1 to skip header row
-            System.out.println(lines.get(i));
             String[] fields = lines.get(i).split(",");
             int bill = Integer.parseInt(fields[0]);
             int amount = Integer.parseInt(fields[1]);
-            System.out.println(bill + " " + amount);
             bills.put(bill, amount);
         }
         return bills;
@@ -45,7 +42,6 @@ public class BillFileReader extends FileReader{
         for (Integer bill : bills.keySet()){
             lines.add(bill + "," + bills.get(bill));
         }
-        System.out.println("Lines: " + lines);
         this.write(lines);
     }
 

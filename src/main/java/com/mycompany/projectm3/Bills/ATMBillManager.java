@@ -21,13 +21,12 @@ public class ATMBillManager {
             this.bills = new HashMap<>();
         }
         this.max_available = calcMaxAvailable();
-        if (this.max_available == 0 || this.bills == null){
+        if (this.max_available == 0){
             bills.put(10, 45);
             bills.put(20, 50);
             bills.put(50, 30);
             bills.put(100, 15);
             bills.put(200, 5);
-            this.bills = bills;
             this.max_available = calcMaxAvailable();
         }
     }
@@ -115,6 +114,14 @@ public class ATMBillManager {
         for (int key : bills.keySet()) {
             for (int i = 0; i < bills.get(key); i++) {
                 extractBill(key);
+            }
+        }
+    }
+
+    public void insertBills(HashMap<Integer, Integer> bills){
+        for (int key : bills.keySet()) {
+            for (int i = 0; i < bills.get(key); i++) {
+                addBill(key);
             }
         }
     }

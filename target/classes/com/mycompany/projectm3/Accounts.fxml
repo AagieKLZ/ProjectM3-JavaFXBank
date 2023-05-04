@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectm3.AccountsController">
+<AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectm3.AccountsController">
    <children>
       <ImageView fitHeight="24.0" fitWidth="125.0" layoutX="8.0" layoutY="8.0">
          <image>
@@ -21,7 +21,7 @@
       <Button fx:id="backBtn" layoutX="14.0" layoutY="56.0" mnemonicParsing="false" onAction="#gotoHome" style="-fx-background-color: #3423A6; -fx-text-fill: white; -fx-font-weight: bold;" text="Volver" />
       <VBox layoutX="296.0" layoutY="34.0" prefHeight="69.0" prefWidth="298.0" spacing="5.0">
          <children>
-            <Label fx:id="balanceLabel" alignment="TOP_CENTER" prefHeight="44.0" prefWidth="354.0" text="0.00€">
+            <Label fx:id="balanceLabel" alignment="TOP_CENTER" prefHeight="44.0" prefWidth="354.0" text="-.--€">
                <font>
                   <Font size="40.0" />
                </font>
@@ -35,7 +35,7 @@
       </VBox>
       <VBox layoutX="261.0" layoutY="251.0" prefHeight="214.0" prefWidth="371.0" spacing="10.0">
          <children>
-            <Label alignment="TOP_CENTER" prefHeight="26.0" prefWidth="298.0" text="Movimientos" textAlignment="CENTER">
+            <Label alignment="TOP_CENTER" prefHeight="25.0" prefWidth="373.0" text="Movimientos" textAlignment="CENTER">
                <font>
                   <Font size="16.0" />
                </font>

@@ -95,17 +95,20 @@ public class WithdrawController implements Initializable {
         return balance;
     }
 
-    public void submit() {
+    public void submit() throws IOException {
         if (balanceLabel.getText().equals("0€")){
             errLabel.setText("La cantidad no puede ser 0");
             return;
         } else if (accSelect.getValue() == null){
             errLabel.setText("Selecciona una cuenta");
             return;
+        } else if (updateBalance() > App.atm.accManager.getAccountById(accSelect.getValue()).getBalance()){
+            errLabel.setText("No tienes suficiente dinero");
+            return;
         }
         Account acc = App.atm.accManager.getAccountById(accSelect.getValue());
         Operation opp = App.atm.oppManager.createOperation("withdraw", acc, null, updateBalance());
-        App.atm.accManager.getAccountById(accSelect.getValue()).addOperation(opp);
+//        App.atm.accManager.getAccountById(accSelect.getValue()).addOperation(opp);
         App.atm.accManager.getAccountById(accSelect.getValue()).extractMoney(updateBalance());
         HashMap<Integer, Integer> bills = new HashMap<>();
         bills.put(10, field10.getValue());
@@ -114,6 +117,7 @@ public class WithdrawController implements Initializable {
         bills.put(100, field100.getValue());
         bills.put(200, field200.getValue());
         App.atm.billManager.extractBills(bills);
+        Navigator.gotoPage("MainATM", backBtn);
     }
 
 }

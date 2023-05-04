@@ -5,7 +5,6 @@
 package com.mycompany.projectm3.User;
 
 import com.mycompany.projectm3.Account.Account;
-import com.mycompany.projectm3.lib.PasswordHasher;
 
 import java.util.ArrayList;
 
@@ -39,7 +38,7 @@ public class User {
      * @param pw
      */
     public void setPassword(String pw){
-        this.password = PasswordHasher.hash(pw);
+        this.password = pw;
     }
 
     /**

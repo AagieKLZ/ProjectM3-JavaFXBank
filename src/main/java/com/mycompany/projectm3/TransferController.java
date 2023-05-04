@@ -7,6 +7,8 @@ package com.mycompany.projectm3;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.mycompany.projectm3.Account.Account;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -43,13 +45,60 @@ public class TransferController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        for (Account acc : App.atm.getUser().getAccounts()){
+            accSelect.getItems().add(acc.getAccNumber());
+        }
     }
     
     public void gotoHome() throws IOException {
         Navigator.gotoPage("MainATM", backBtn);
     }
 
-    public void submit(){};
+    public void submit() throws IOException{
+        Account target = null;
+        try {
+            target = App.atm.accManager.getAccountById(Long.parseLong(targetAccNum.getText()));
+        } catch (Exception e){
+            errLabel.setText("La cuenta no existe");
+            return;
+        }
+        if (accSelect.getValue() == null){
+            errLabel.setText("Selecciona una cuenta");
+            return;
+        }
+        Account source = App.atm.accManager.getAccountById(accSelect.getValue());
+        if (target == null){
+            errLabel.setText("La cuenta no existe");
+            return;
+        }
+        if (!target.getOwner().getName().equals(targetName.getText())){
+            errLabel.setText("El nombre no coincide");
+            return;
+        }
+        if (target.getAccNumber() == accSelect.getValue()){
+            errLabel.setText("No puedes transferir a la misma cuenta");
+            return;
+        }
+        if (Integer.parseInt(moneyField.getText()) > source.getBalance()){
+            errLabel.setText("No tienes suficiente dinero");
+            return;
+        }
+        if (Integer.parseInt(moneyField.getText()) <= 0){
+            errLabel.setText("La cantidad debe ser positiva");
+            return;
+        }
+        int money = 0;
+        try {
+            money = Integer.parseInt(moneyField.getText());
+        } catch (Exception e){
+            errLabel.setText("La cantidad debe ser un número");
+            return;
+        }
+        source.extractMoney(Integer.parseInt(moneyField.getText()));
+        target.addMoney(Integer.parseInt(moneyField.getText()));
+        App.atm.oppManager.createOperation("transfer", source, target, Integer.parseInt(moneyField.getText()));
+        Navigator.gotoPage("MainATM", actBtn);
+
+    };
     
 }

@@ -51,6 +51,9 @@ public class MainATMController implements Initializable {
     @FXML
     Button logoutBtn;
 
+    @FXML
+    Button profileBtn;
+
     ArrayList<String> keys = new ArrayList<>();
     
     @Override
@@ -65,10 +68,6 @@ public class MainATMController implements Initializable {
             keys.add(e.getCode().toString());
             if (keys.size() > 4) {
                 keys.remove(0);
-                /**
-                if (keys.get(0) == "UP" && keys.get(1) == "LEFT" && keys.get(2) == "DOWN" && keys.get(3) == "RIGHT"){
-                    System.out.println("You have unlocked the secret menu");
-                }*/
                 if (keysArray.equals(keys)){
                     System.out.println("You have unlocked the secret menu");
                     try {
@@ -112,6 +111,10 @@ public class MainATMController implements Initializable {
     public void signOut() throws IOException{
         App.atm.setUser(null);
         Navigator.gotoPage("welcome", logoutBtn);
+    }
+
+    public void gotoProfile() throws IOException{
+        Navigator.gotoPage("Profile", profileBtn);
     }
     
 }

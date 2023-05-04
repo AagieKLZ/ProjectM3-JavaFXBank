@@ -43,7 +43,6 @@ public class ATM {
 
     private void assignOperations(){
         ArrayList<Operation> operations = this.oppManager.getOperations();
-        System.out.println(operations);
         for (Account acc : this.accManager.getAccountList()) {
             for (Operation operation : operations) {
                 if (operation.belongs(acc)) {

@@ -157,6 +157,10 @@ public class Card {
         return account;
     }
 
+    public int getPIN() {
+        return PIN;
+    }
+
     public void setAccount(CurrentAccount account) {
         this.account = account;
     }

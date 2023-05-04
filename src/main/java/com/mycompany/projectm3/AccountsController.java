@@ -71,8 +71,9 @@ public class AccountsController implements Initializable {
         for (Account account : accList) {
             VBox accBox = createAccBox(account);
             accPanel.getChildren().add(accBox);
-            balanceLabel.setText(String.valueOf(total += account.getBalance()) + "€");
+            total += account.getBalance();
         }
+        balanceLabel.setText(String.valueOf(total) + "€");
         String selectedColor="#decf00";
     }
 

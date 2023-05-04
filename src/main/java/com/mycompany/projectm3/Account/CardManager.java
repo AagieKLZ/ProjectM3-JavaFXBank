@@ -33,6 +33,15 @@ public class CardManager {
         return card;
     }
 
+    public Card findCard(long cardNumber){
+        for (Card card : this.cardList){
+            if (card.getCardNumber() == cardNumber){
+                return card;
+            }
+        }
+        return null;
+    }
+
     public void addCard(Card card){
         this.cardList.add(card);
     }

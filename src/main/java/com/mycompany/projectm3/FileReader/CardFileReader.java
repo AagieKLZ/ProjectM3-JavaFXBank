@@ -16,7 +16,7 @@ public class CardFileReader extends FileReader{
      * Constructor
      */
     public CardFileReader() {
-        super("cards.csv");
+        super("data/cards.csv");
     }
 
     /**

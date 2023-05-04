@@ -142,13 +142,6 @@ public class NewAccountController implements Initializable {
             acc.addMoney((float) money);
         }
         App.atm.accManager.assign(acc, App.atm.getUser());
-        System.out.println(App.atm.accManager.getAccountList());
-        System.out.println("Account type: " + accTypeValue);
-        System.out.println("Interest: " + interestField.getText());
-        System.out.println("Create card: " + createCard);
-        System.out.println("PIN: " + pin);
-        System.out.println("Starting money: " + money);
-        System.out.println("Create account");
         try {
             gotoHome();
         } catch (IOException e) {

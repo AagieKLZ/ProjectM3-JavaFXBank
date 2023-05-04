@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #D6D6D6;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectm3.InsertCardController">
+<AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #D6D6D6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectm3.InsertCardController">
    <children>
       <ImageView fitHeight="24.0" fitWidth="125.0" layoutX="8.0" layoutY="8.0">
          <image>
             <Image url="@../../../assets/fxbank-removebg-preview.png" />
          </image>
       </ImageView>
-      <VBox alignment="CENTER" fillWidth="false" layoutX="25.0" layoutY="93.0" prefHeight="294.0" prefWidth="593.0" spacing="35.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
+      <VBox alignment="CENTER" fillWidth="false" layoutX="25.0" layoutY="93.0" prefHeight="294.0" prefWidth="593.0" spacing="15.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
          <children>
             <Label text="Iniciar Sesion">
                <font>
@@ -44,6 +44,11 @@
                   <PasswordField fx:id="cardPIN" />
                </children>
             </VBox>
+            <Label fx:id="errLabel" textFill="RED">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
             <Button mnemonicParsing="false" onAction="#logIn" style="-fx-background-color: #3423A6; -fx-font-weight: bold;" text="Iniciar Sesion" textFill="WHITE" />
          </children>
       </VBox>

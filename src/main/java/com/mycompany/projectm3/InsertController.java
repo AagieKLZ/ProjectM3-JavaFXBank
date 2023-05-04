@@ -96,8 +96,8 @@ public class InsertController implements Initializable {
         Navigator.gotoPage("MainATM", backBtn);
     }
 
-    public void submit() {
-        if (balanceLabel.getText().equals("0€")){
+    public void submit() throws IOException {
+        if (updateBalance() == 0){
             errLabel.setText("La cantidad no puede ser 0");
             return;
         } else if (accSelect.getValue() == null){
@@ -106,7 +106,9 @@ public class InsertController implements Initializable {
         }
         Account acc = App.atm.accManager.getAccountById(accSelect.getValue());
         Operation opp = App.atm.oppManager.createOperation("insert", null, acc, updateBalance());
-        App.atm.accManager.getAccountById(accSelect.getValue()).addOperation(opp);
+        //App.atm.accManager.getAccountById(accSelect.getValue()).addOperation(opp);
+        App.atm.accManager.getAccountById(accSelect.getValue()).addMoney(updateBalance());
+        Navigator.gotoPage("MainATM", backBtn);
     }
 
 }

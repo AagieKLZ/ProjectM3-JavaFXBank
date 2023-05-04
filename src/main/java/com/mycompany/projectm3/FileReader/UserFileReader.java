@@ -14,7 +14,7 @@ public class UserFileReader extends FileReader {
      * Constructor
      */
     public UserFileReader() {
-        super("users.csv");
+        super("data/users.csv");
     }
 
     /**

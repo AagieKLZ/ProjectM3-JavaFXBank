@@ -17,7 +17,7 @@ public class OperationFileReader extends FileReader {
      * Constructor
      */
     public OperationFileReader() {
-        super("operations.csv");
+        super("data/operations.csv");
     }
 
     /**

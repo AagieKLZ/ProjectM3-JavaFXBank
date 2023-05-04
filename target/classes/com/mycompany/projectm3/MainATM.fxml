@@ -33,7 +33,7 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <Button layoutX="438.0" layoutY="7.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="91.0" style="-fx-background-color: white; -fx-border-color: #3423A6; -fx-border-radius: 5px; -fx-text-fill: #3423A6; -fx-font-weight: 500;" text="Mi Perfil" />
+      <Button fx:id="profileBtn" layoutX="438.0" layoutY="7.0" mnemonicParsing="false" onAction="#gotoProfile" prefHeight="27.0" prefWidth="91.0" style="-fx-background-color: white; -fx-border-color: #3423A6; -fx-border-radius: 5px; -fx-text-fill: #3423A6; -fx-font-weight: 500;" text="Mi Perfil" />
       <HBox alignment="CENTER" layoutY="197.0" prefHeight="116.0" prefWidth="640.0" spacing="25.0" AnchorPane.bottomAnchor="167.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="197.0">
          <children>
             <Button fx:id="createAcc" mnemonicParsing="false" onAction="#gotoCreateAccount" prefHeight="55.0" prefWidth="240.0" style="-fx-text-fill: white; -fx-background-color: #3423A6; -fx-font-size: 15;" text="Nueva Cuenta" />

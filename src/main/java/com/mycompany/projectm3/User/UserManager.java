@@ -3,7 +3,6 @@ package com.mycompany.projectm3.User;
 import com.mycompany.projectm3.Account.Account;
 import com.mycompany.projectm3.FileReader.AccountFileReader;
 import com.mycompany.projectm3.FileReader.UserFileReader;
-import com.mycompany.projectm3.lib.PasswordHasher;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +13,7 @@ import java.util.HashMap;
  */
 public class UserManager {
     private ArrayList<User> userList;
-    private HashMap<Integer, Integer> attempts;
+    private HashMap<String, Integer> attempts;
 
     /**
      * Creates a new user manager and loads the users from the file.
@@ -35,7 +34,7 @@ public class UserManager {
         }
         this.attempts = new HashMap<>();
         for (User user: this.userList){
-            this.attempts.put(user.getId(), 5);
+            this.attempts.put(user.getEmail(), 5);
         }
     }
 
@@ -74,13 +73,21 @@ public class UserManager {
      */
     public User LogIn(String email, String Password){
         for (User user: userList){
-            System.out.println(user.getEmail() + " " + user.getPassword());
             if (user.getEmail().equals(email)){
                 if (user.getPassword().equals(Password)){
                     return user;
                 }
             }
         }
+        attempts.put(email, attempts.get(email) - 1);
+        if (attempts.get(email) == 0){
+            for (User user : userList){
+                if (user.getEmail().equals(email)){
+                    lockUser(user);
+                }
+            }
+        }
+        saveUsers();
         return null;
     }
 
@@ -102,12 +109,21 @@ public class UserManager {
         saveUsers();
     }
 
+    public int getAttempts(String email){
+        return this.attempts.get(email);
+    }
+
     /**
      * Saves the users to the file.
      */
     public void saveUsers(){
         UserFileReader fileReader = new UserFileReader();
         fileReader.writeLines(this.userList);
+    }
+
+    public void deleteUser(User user){
+        this.userList.remove(user);
+        saveUsers();
     }
 
 }

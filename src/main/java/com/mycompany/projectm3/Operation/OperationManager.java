@@ -28,6 +28,14 @@ public class OperationManager {
     public Operation createOperation(String type, Account source, Account target, float amount) {
         Operation opp = new Operation(type, source, target, amount);
         this.operations.add(opp);
+        if (source == null){
+            target.addOperation(opp);
+        } else if (target == null){
+            source.addOperation(opp);
+        } else {
+            source.addOperation(opp);
+            target.addOperation(opp);
+        }
         saveOperations();
         return opp;
     }
