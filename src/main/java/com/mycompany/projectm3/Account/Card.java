@@ -134,4 +134,12 @@ public class Card {
     public String toString() {
         return String.format("%d,%d,%s,%d,%d", this.cardNumber, this.securityNumber, DateCalculator.timeToString(this.expirationDate), this.PIN, this.account.getAccountId());
     }
+
+    public CurrentAccount getAccount() {
+        return account;
+    }
+
+    public void setAccount(CurrentAccount account) {
+        this.account = account;
+    }
 }

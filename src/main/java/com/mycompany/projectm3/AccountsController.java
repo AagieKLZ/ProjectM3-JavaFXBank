@@ -64,9 +64,8 @@ public class AccountsController implements Initializable {
         User user = new User("abc", "123", 5);
         SavingAccount acc = new SavingAccount(1, 12, user);
         CurrentAccount acc2 = new CurrentAccount(1, 12, user);
-        ArrayList<Account> accList = new ArrayList<>();
-        accList.add(acc);
-        accList.add(acc2);
+        ArrayList<Account> accList = App.atm.getUser().getAccounts();
+
 
         Label defaultCard = new Label("Selecciona una cuenta");
         cardPanel.getChildren().add(defaultCard);
@@ -116,14 +115,14 @@ public class AccountsController implements Initializable {
             } else {
                 CurrentAccount currentAcc = (CurrentAccount) acc;
                 ArrayList<Card> cards = currentAcc.getCards();
-                cards.add(new Card(1234, currentAcc));
+                //cards.add(new Card(1234, currentAcc));
                 for (Card card : cards) {
                     VBox cardBox = createCardBox(card);
                     cardPanel.getChildren().add(cardBox);
                 }
             }
             ArrayList<Operation> operations = acc.getOperations();
-            operations.add(new Operation("transfer", selectedAcc, null, 52));
+            System.out.println(operations);
             operationPanel.getChildren().clear();
             for (Operation opp : operations){
                 HBox oppLine = createOppBox(opp);
@@ -155,7 +154,14 @@ public class AccountsController implements Initializable {
     private HBox createOppBox(Operation opp){
         HBox oppLine = new HBox();
         Label oppType = new Label(opp.getOppType().equals("transfer") ? "Transferencia" : (opp.getOppType().equals("withdraw") ? "Extracción" : "Ingreso"));
-        Label amount = new Label((opp.getSource().equals(selectedAcc) ? "-" : "+") + String.valueOf(opp.getAmount()) + "€");
+        Label amount;
+        if (opp.getSource() == null && opp.getTarget().equals(selectedAcc)){
+            amount = new Label("+" + String.valueOf(opp.getAmount()) + "€");
+        } else if (opp.getTarget() == null && opp.getSource().equals(selectedAcc) ){
+            amount = new Label("-" + String.valueOf(opp.getAmount()) + "€");
+        } else {
+            amount = new Label((opp.getSource().equals(selectedAcc) ? "-" : "+") + String.valueOf(opp.getAmount()) + "€");
+        }
         oppType.setPrefSize(150, 50);
         oppType.setAlignment(Pos.CENTER_LEFT);
         amount.setPrefSize(150, 50);

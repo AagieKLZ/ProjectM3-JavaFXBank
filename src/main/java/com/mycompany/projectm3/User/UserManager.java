@@ -23,6 +23,9 @@ public class UserManager {
     public UserManager(){
         this.hasher = new PasswordHasher();
         this.userList = new UserFileReader().readLines();
+        if (this.userList == null){
+            this.userList = new ArrayList<>();
+        }
         ArrayList<Account> accounts = new AccountFileReader().readLines();
         for (Account account : accounts){
             int userId = account.getOwnerId();
@@ -43,10 +46,11 @@ public class UserManager {
      * @param name
      * @param password
      */
-    public void createUser(String email, String name, String password){
+    public User createUser(String email, String name, String password){
         User user = new User(email, name, userList.size()+1);
         user.setPassword(password);
         this.userList.add(user);
+        return user;
     }
 
     /**
@@ -65,13 +69,19 @@ public class UserManager {
 
     /**
      * Tries to log in a user.
-     * @param name
+     * @param email
      * @param Password
      * @return true if the user is logged in, false otherwise
      */
-    public boolean LogIn(String name, String Password){
-        /*TODO */
-        return false;
+    public User LogIn(String email, String Password){
+        for (User user: userList){
+            if (user.getEmail().equals(email)){
+                if (user.getPassword().equals(Password)){
+                    return user;
+                }
+            }
+        }
+        return null;
     }
 
     /**

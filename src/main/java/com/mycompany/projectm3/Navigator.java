@@ -10,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+
 /**
  *
  * @author alumne
@@ -27,6 +29,11 @@ public class Navigator {
     
     public static void gotoPage(String pt, Label lb) throws IOException{
         Scene scene = lb.getScene();
+        scene.setRoot(loadFXML(pt));
+    }
+
+    public static void gotoPage(String pt, AnchorPane ap) throws IOException{
+        Scene scene = ap.getScene();
         scene.setRoot(loadFXML(pt));
     }
 }

@@ -7,9 +7,12 @@ package com.mycompany.projectm3;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.mycompany.projectm3.User.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 /**
@@ -18,7 +21,6 @@ import javafx.scene.control.TextField;
  * @author alumne
  */
 public class SignUpController implements Initializable {
-
 
     @FXML
     private Button backBtn;
@@ -32,6 +34,9 @@ public class SignUpController implements Initializable {
     private Button signupBtn;
     @FXML
     private Button loginBtn;
+
+    @FXML
+    Label errLabel;
     /**
      * Initializes the controller class.
      */
@@ -48,6 +53,21 @@ public class SignUpController implements Initializable {
     @FXML
     private void gotoLogin() throws IOException {
         Navigator.gotoPage("LogIn", loginBtn);
+    }
+
+    @FXML
+    private void signUp() throws IOException{
+        String name = nameInput.getText();
+        String email = emailInput.getText();
+        String pw = pwInput.getText();
+        if (name.equals("") || email.equals("") || pw.equals("")){
+            errLabel.setText("Please fill all the fields");
+        } else {
+            errLabel.setText("");
+            User user = App.atm.userManager.createUser(name, email, pw);
+            App.atm.setUser(user);
+            Navigator.gotoPage("MainATM", signupBtn);
+        }
     }
 
 }

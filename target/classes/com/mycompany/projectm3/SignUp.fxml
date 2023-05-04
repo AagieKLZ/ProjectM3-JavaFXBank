@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #D6D6D6;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectm3.SignUpController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #D6D6D6;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectm3.SignUpController">
    <children>
       <ImageView fitHeight="24.0" fitWidth="125.0" layoutX="8.0" layoutY="8.0">
          <image>
@@ -21,7 +21,7 @@
          </image>
       </ImageView>
       <Button fx:id="backBtn" layoutX="14.0" layoutY="56.0" mnemonicParsing="false" onAction="#gotoHome" style="-fx-background-color: #3423A6; -fx-text-fill: white; -fx-font-weight: bold;" text="Volver" />
-      <VBox alignment="CENTER" layoutX="159.0" layoutY="86.0" prefHeight="200.0" prefWidth="283.0" spacing="4.0">
+      <VBox alignment="CENTER" layoutX="179.0" layoutY="80.0" prefHeight="200.0" prefWidth="283.0" spacing="4.0">
          <children>
             <Label alignment="CENTER" prefHeight="16.0" prefWidth="282.0" text="Registrarse" textAlignment="CENTER">
                <font>
@@ -37,7 +37,8 @@
             <TextField fx:id="emailInput" promptText="email" />
             <Label text="Contraseña" />
             <PasswordField fx:id="pwInput" promptText="*****" />
-            <Button fx:id="signupBtn" mnemonicParsing="false" prefHeight="24.0" prefWidth="210.0" style="-fx-background-color: #3423A6; -fx-font-weight: bold;" text="Crear Cuenta" textFill="WHITE">
+            <Label fx:id="errLabel" alignment="CENTER" textFill="RED" />
+            <Button fx:id="signupBtn" mnemonicParsing="false" onAction="#signUp" prefHeight="24.0" prefWidth="210.0" style="-fx-background-color: #3423A6; -fx-font-weight: bold;" text="Crear Cuenta" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>

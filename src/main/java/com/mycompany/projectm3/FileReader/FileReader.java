@@ -1,6 +1,6 @@
 package com.mycompany.projectm3.FileReader;
 
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,19 +8,14 @@ import java.util.Scanner;
  * Abstract class for reading and writing to files
  */
 abstract class FileReader {
-    protected final String path = "";
+    protected String path = "";
     protected File file;
-    protected Scanner scanner;
 
     /**
      * Creates a new FileReader object for a given file path and creates the file if it does not exist
      */
-    public FileReader(){
-        this.scanner = new Scanner(this.path);
-        this.file = new File(this.path);
-        if(!this.fileExists()){
-            this.createFile();
-        }
+    public FileReader(String path) {
+        this.file = new File(path);
     }
 
     /**
@@ -28,9 +23,17 @@ abstract class FileReader {
      * @return each line of the file
      */
     public ArrayList<String> read(){
+        System.out.println("File: " + file.getName());
         ArrayList<String> lines = new ArrayList<String>();
-        while(this.scanner.hasNextLine()){
-            lines.add(this.scanner.nextLine());
+        try {
+            Scanner scanner = new Scanner(this.file);
+            while (scanner.hasNextLine()) {
+                lines.add(scanner.nextLine());
+            }
+            scanner.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Error reading file");
         }
         return lines;
     }
@@ -40,11 +43,24 @@ abstract class FileReader {
      * @param lines
      */
     public void write(ArrayList<String> lines){
-        ArrayList<String> currentLines = this.read();
+        ArrayList<String> currentLines = new ArrayList<>();
+        System.out.println("File: " + file.getAbsolutePath());
         for(String line : lines){
             currentLines.add(line);
         }
-        /* TODO - Write to file */
+        System.out.println(currentLines);
+        try {
+            Writer writer = new FileWriter(this.file);
+            for (String line : currentLines){
+
+                System.out.println(line);
+                writer.write(line + "\n");
+            }
+            writer.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage() + e.getStackTrace());
+            System.out.println("Error writing to file");
+        }
     }
 
     /**
@@ -62,6 +78,7 @@ abstract class FileReader {
         try{
             this.file.createNewFile();
         }catch(Exception e){
+            System.out.println(e.getMessage());
             System.out.println("File already exists");
         }
     }

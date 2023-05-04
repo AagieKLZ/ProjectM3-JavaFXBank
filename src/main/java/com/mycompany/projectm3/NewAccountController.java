@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.mycompany.projectm3.Account.Account;
+import com.mycompany.projectm3.Account.CurrentAccount;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -58,12 +60,12 @@ public class NewAccountController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        accType.getItems().add("Savings");
-        accType.getItems().add("Current");
+        accType.getItems().add("Ahorro");
+        accType.getItems().add("Corriente");
         createAccBtn.setDisable(true);
         accType.setOnAction((event) -> {
             String acc = accType.getValue();
-            if (acc.equals("Savings")) {
+            if (acc.equals("Ahorro")) {
                 interestField.setText("5%");
                 addStartingCard.setDisable(true);
                 addStartingCard.setSelected(false);
@@ -124,6 +126,15 @@ public class NewAccountController implements Initializable {
                 return;
             }
         }
+        Account acc = App.atm.accManager.createAccount(accTypeValue == "Ahorro" ? "Savings" : "Current", App.atm.getUser());
+        if (createCard && acc instanceof CurrentAccount) {
+            App.atm.cardManager.createCard(pin, (CurrentAccount) acc);
+        }
+        if (addStartingMoney.isSelected()) {
+            acc.addMoney((float) money);
+        }
+        App.atm.accManager.assign(acc, App.atm.getUser());
+        System.out.println(App.atm.accManager.getAccountList());
         System.out.println("Account type: " + accTypeValue);
         System.out.println("Interest: " + interestField.getText());
         System.out.println("Create card: " + createCard);

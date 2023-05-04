@@ -27,8 +27,8 @@
             <Button fx:id="checkMovements" mnemonicParsing="false" onAction="#gotoMovements" prefHeight="57.0" prefWidth="240.0" style="-fx-background-color: white; -fx-text-fill: #3423A6; -fx-border-color: #3423A6; -fx-border-radius: 10px;" text="Consultar Movimientos" />
          </children>
       </HBox>
-      <Button layoutX="479.0" layoutY="8.0" mnemonicParsing="false" style="-fx-background-color: #E54210; -fx-text-fill: white; -fx-font-weight: bold;" text="Cerrar Sesion" AnchorPane.rightAnchor="8.0" />
-      <Label layoutX="243.0" layoutY="59.0" text="Tus Cuentas">
+      <Button fx:id="logoutBtn" layoutX="479.0" layoutY="8.0" mnemonicParsing="false" onAction="#signOut" style="-fx-background-color: #E54210; -fx-text-fill: white; -fx-font-weight: bold;" text="Cerrar Sesion" AnchorPane.rightAnchor="8.0" />
+      <Label fx:id="welcomeLabel" alignment="CENTER" layoutX="-1.0" layoutY="59.0" prefHeight="30.0" prefWidth="640.0" text="Bienvenido," textAlignment="CENTER">
          <font>
             <Font size="25.0" />
          </font>

@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -44,10 +45,17 @@ public class MainATMController implements Initializable {
     @FXML
     AnchorPane rootPane;
 
+    @FXML
+    Label welcomeLabel;
+
+    @FXML
+    Button logoutBtn;
+
     ArrayList<String> keys = new ArrayList<>();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        welcomeLabel.setText("Welcome, " + App.atm.getUser().getName());
         rootPane.setOnKeyPressed(e -> {
             ArrayList<String> keysArray = new ArrayList<>();
             keysArray.add("UP");
@@ -63,6 +71,11 @@ public class MainATMController implements Initializable {
                 }*/
                 if (keysArray.equals(keys)){
                     System.out.println("You have unlocked the secret menu");
+                    try {
+                        Navigator.gotoPage("SecretMenu", rootPane);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
             }
         });
@@ -94,6 +107,11 @@ public class MainATMController implements Initializable {
 
     public void gotoTransfer() throws IOException {
         Navigator.gotoPage("Transfer", insertBtn);
+    }
+
+    public void signOut() throws IOException{
+        App.atm.setUser(null);
+        Navigator.gotoPage("welcome", logoutBtn);
     }
     
 }

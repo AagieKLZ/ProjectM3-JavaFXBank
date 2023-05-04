@@ -26,9 +26,10 @@ public class OperationManager {
      * @param target Target account
      * @param amount Amount of money being transferred
      */
-    public void createOperation(String type, Account source, Account target, float amount) {
+    public Operation createOperation(String type, Account source, Account target, float amount) {
         Operation opp = new Operation(type, source, target, amount);
         this.operations.add(opp);
+        return opp;
     }
 
     /**

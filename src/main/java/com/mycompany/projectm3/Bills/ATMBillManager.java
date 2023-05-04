@@ -17,8 +17,12 @@ public class ATMBillManager {
     public ATMBillManager(){
         BillFileReader billFileReader = new BillFileReader();
         this.bills = billFileReader.readLines();
+        System.out.println("Bills: " + this.bills);
+        if (this.bills == null){
+            this.bills = new HashMap<>();
+        }
         this.max_available = calcMaxAvailable();
-        if (this.max_available == 0){
+        if (this.max_available == 0 || this.bills == null){
             bills.put(10, 45);
             bills.put(20, 50);
             bills.put(50, 30);
@@ -47,6 +51,10 @@ public class ATMBillManager {
             return bills.get(amount);
         }
         return -1;
+    }
+
+    public void setBills(HashMap<Integer, Integer> bills) {
+        this.bills = bills;
     }
 
     /**
@@ -102,5 +110,13 @@ public class ATMBillManager {
     public void saveBills(){
         BillFileReader billFileReader = new BillFileReader();
         billFileReader.writeLines(this.bills);
+    }
+
+    public void extractBills(HashMap<Integer, Integer> bills){
+        for (int key : bills.keySet()) {
+            for (int i = 0; i < bills.get(key); i++) {
+                extractBill(key);
+            }
+        }
     }
 }

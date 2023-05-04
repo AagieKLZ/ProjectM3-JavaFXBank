@@ -14,7 +14,7 @@ public class EventFileReader extends FileReader {
      * Constructor
      */
     public EventFileReader() {
-        super();
+        super("events.csv");
     }
 
     /**

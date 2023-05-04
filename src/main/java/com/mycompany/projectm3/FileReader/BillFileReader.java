@@ -7,13 +7,13 @@ import java.util.HashMap;
  * Reads and writes from the bills.csv file
  */
 public class BillFileReader extends FileReader{
-    private final String path = "bills.csv";
+    private String path = "../DB/bills.csv";
 
     /**
      * Constructor
      */
     public BillFileReader() {
-        super();
+        super("bills.csv");
     }
 
     /**
@@ -22,11 +22,17 @@ public class BillFileReader extends FileReader{
      */
     public HashMap<Integer, Integer> readLines(){
         ArrayList<String> lines = this.read();
+        System.out.println("Lines: " + lines);
         HashMap<Integer, Integer> bills = new HashMap<>();
-        for (String line : lines){
-            /*TODO - Read lines*/
+        for (int i = 1; i < lines.size(); i++) { // start loop at index 1 to skip header row
+            System.out.println(lines.get(i));
+            String[] fields = lines.get(i).split(",");
+            int bill = Integer.parseInt(fields[0]);
+            int amount = Integer.parseInt(fields[1]);
+            System.out.println(bill + " " + amount);
+            bills.put(bill, amount);
         }
-        return null;
+        return bills;
     }
 
     /**
@@ -35,9 +41,11 @@ public class BillFileReader extends FileReader{
      */
     public void writeLines(HashMap<Integer, Integer> bills){
         ArrayList<String> lines = new ArrayList<>();
+        lines.add("bill,amount");
         for (Integer bill : bills.keySet()){
-            lines.add(bill.toString());
+            lines.add(bill + "," + bills.get(bill));
         }
+        System.out.println("Lines: " + lines);
         this.write(lines);
     }
 

@@ -8,13 +8,13 @@ import java.util.ArrayList;
  * Reads and writes from the users.json file
  */
 public class UserFileReader extends FileReader {
-    private final String path = "users.json";
+    private final String path = "users.csv";
 
     /**
      * Constructor
      */
     public UserFileReader() {
-        super();
+        super("users.csv");
     }
 
     /**

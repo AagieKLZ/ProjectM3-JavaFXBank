@@ -3,7 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,7 +18,7 @@
             <Image url="@../../../assets/fxbank-removebg-preview.png" />
          </image>
       </ImageView>
-      <VBox alignment="CENTER" layoutX="171.0" layoutY="140.0" prefHeight="200.0" prefWidth="298.0" spacing="20.0">
+      <VBox alignment="CENTER" layoutX="171.0" layoutY="101.0" prefHeight="317.0" prefWidth="298.0" spacing="10.0">
          <children>
             <HBox alignment="CENTER" prefHeight="31.0" prefWidth="298.0" spacing="15.0">
                <children>
@@ -27,21 +27,47 @@
                </children>
             </HBox>
             <Label fx:id="availableLabel" />
-            <HBox alignment="CENTER" prefHeight="31.0" prefWidth="298.0" spacing="15.0">
+            <VBox layoutX="184.0" layoutY="115.0" prefWidth="272.0" spacing="10.0">
                <children>
-                  <Label text="Cantidad" />
-                  <HBox alignment="CENTER">
+                  <HBox alignment="CENTER" prefHeight="42.0" prefWidth="272.0" spacing="25.0">
                      <children>
-                        <TextField fx:id="moneyField" prefHeight="24.0" prefWidth="143.0" />
-                        <Label fx:id="moneySq" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: #3423A6; -fx-text-fill: white; -fx-font-weight: bold;" text="€">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
+                        <Label prefWidth="45.0" text="10€" />
+                        <Spinner fx:id="field10" />
                      </children>
                   </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="42.0" prefWidth="272.0" spacing="25.0">
+                     <children>
+                        <Label prefWidth="45.0" text="20€" />
+                        <Spinner fx:id="field20" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="52.0" prefHeight="42.0" prefWidth="272.0" spacing="25.0">
+                     <children>
+                        <Label prefWidth="45.0" text="50€" />
+                        <Spinner fx:id="field50" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="94.0" prefHeight="42.0" prefWidth="272.0" spacing="25.0">
+                     <children>
+                        <Label prefHeight="16.0" prefWidth="45.0" text="100€" />
+                        <Spinner fx:id="field100" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="136.0" prefHeight="42.0" prefWidth="272.0" spacing="25.0">
+                     <children>
+                        <Label prefWidth="45.0" text="200€" />
+                        <Spinner fx:id="field200" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="40.0" prefWidth="243.0">
+                     <children>
+                        <Label prefHeight="40.0" prefWidth="151.0" style="-fx-font-weight: bold;" text="Total" />
+                        <Label fx:id="balanceLabel" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="136.0" text="0€" textAlignment="RIGHT" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" />
                </children>
-            </HBox>
+            </VBox>
             <Label fx:id="errLabel" style="-fx-text-fill: #E54210;" />
             <HBox alignment="CENTER" prefHeight="26.0" prefWidth="299.0" spacing="60.0">
                <children>
@@ -51,7 +77,7 @@
             </HBox>
          </children>
       </VBox>
-      <Label layoutX="274.0" layoutY="71.0" text="Ingresar">
+      <Label layoutX="268.0" layoutY="45.0" text="Ingresar">
          <font>
             <Font size="25.0" />
          </font>

@@ -14,7 +14,7 @@ public class AccountFileReader extends FileReader {
      * Constructor
      */
     public AccountFileReader() {
-        super();
+        super("accounts.csv");
     }
 
     /**
@@ -32,9 +32,11 @@ public class AccountFileReader extends FileReader {
 
     /**
      * Writes the lines to the file
+     *
      * @param accounts ArrayList of lines to write to the file
+     * @param generate
      */
-    public void writeLines(ArrayList<Account> accounts){
+    public void writeLines(ArrayList<Account> accounts, String generate){
         ArrayList<String> lines = new ArrayList<>();
         for (Account account : accounts){
             lines.add(account.toString());

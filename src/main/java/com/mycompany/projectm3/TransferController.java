@@ -23,7 +23,7 @@ public class TransferController implements Initializable {
 
 
     @FXML
-    private ChoiceBox<?> accSelect;
+    private ChoiceBox<Long> accSelect;
     @FXML
     private TextField targetAccNum;
     @FXML

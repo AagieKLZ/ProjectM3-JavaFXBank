@@ -7,9 +7,12 @@ package com.mycompany.projectm3;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.mycompany.projectm3.User.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 /**
@@ -33,6 +36,9 @@ public class LogInController implements Initializable {
     
     @FXML
     Button signupBtn;
+
+    @FXML
+    Label errLabel;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -44,7 +50,12 @@ public class LogInController implements Initializable {
         System.out.println("Log in");
         System.out.println("Username: " + username.getText());
         System.out.println("Password: " + password.getText());
-        Navigator.gotoPage("MainATM", signupBtn);
+        if (username.getText() == "" || username.getText() == ""){
+            errLabel.setText("Usuario o contraseña no válidos");
+        } else {
+            App.atm.setUser(new User(username.getText(), username.getText(), 5));
+            Navigator.gotoPage("MainATM", signupBtn);
+        }
     }
     
     @FXML

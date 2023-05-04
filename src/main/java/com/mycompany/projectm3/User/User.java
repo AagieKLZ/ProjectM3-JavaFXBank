@@ -23,7 +23,7 @@ public class User {
 
     /**
      * Creates a new user
-     * @param email.
+     * @param email
      * @param name
      * @param id
      */
@@ -31,6 +31,7 @@ public class User {
         this.email = email;
         this.name = name;
         this.id = id;
+        this.accounts = new ArrayList<>();
     }
 
     /**
@@ -157,5 +158,14 @@ public class User {
     @Override
     public String toString() {
         return String.format("%s,%s,%d,%s,%s", this.email, this.name, this.id, this.password, this.isLocked);
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if (!(obj instanceof User)){
+            return false;
+        }
+        User user = (User) obj;
+        return user.getEmail() == this.email || obj == this;
     }
 }

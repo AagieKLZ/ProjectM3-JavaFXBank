@@ -70,7 +70,7 @@ public class Account {
      */
     public ArrayList<Operation> getOperations(){
         /* TODO */
-        return new ArrayList<Operation>();
+        return this.operations;
     }
 
     /**
@@ -155,4 +155,5 @@ public class Account {
     public String toString() {
         return String.format("%d,%f,%f,%d", this.account_id, this.balance, this.interest, this.owner.getId());
     }
+
 }

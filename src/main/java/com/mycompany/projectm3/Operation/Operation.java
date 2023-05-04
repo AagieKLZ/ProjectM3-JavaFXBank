@@ -98,6 +98,11 @@ public class Operation {
      */
     @Override
     public String toString() {
+        if (this.source == null){
+            return String.format("%s,%d,%d,%f,%d", this.oppType, -1, this.target.getAccountId(), this.amount, this.timestamp);
+        } else if (this.target == null){
+            return String.format("%s,%d,%d,%f,%d", this.oppType, this.source.getAccountId(), -1, this.amount, this.timestamp);
+        }
         return String.format("%s,%d,%d,%f,%d", this.oppType, this.source.getAccountId(), this.target.getAccountId(), this.amount, this.timestamp);
     }
 }

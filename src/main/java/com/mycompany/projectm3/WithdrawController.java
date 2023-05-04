@@ -6,14 +6,15 @@ package com.mycompany.projectm3;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
+
+import com.mycompany.projectm3.Account.Account;
+import com.mycompany.projectm3.Operation.Operation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 /**
  * FXML Controller class
@@ -23,13 +24,9 @@ import javafx.scene.control.TextField;
 public class WithdrawController implements Initializable {
 
     @FXML
-    private ChoiceBox<?> accSelect;
+    private ChoiceBox<Long> accSelect;
     @FXML
     private Label availableLabel;
-    @FXML
-    private TextField moneyField;
-    @FXML
-    private Label moneySq;
     @FXML
     private Label errLabel;
     @FXML
@@ -37,19 +34,86 @@ public class WithdrawController implements Initializable {
     @FXML
     private Button createAccBtn;
 
+    @FXML
+    Spinner<Integer> field10;
+
+    @FXML
+    Spinner<Integer> field20;
+
+    @FXML
+    Spinner<Integer> field50;
+
+    @FXML
+    Spinner<Integer> field100;
+
+    @FXML
+    Spinner<Integer> field200;
+
+    @FXML
+    Label balanceLabel;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        for (Account acc : App.atm.getUser().getAccounts()){
+            accSelect.getItems().add(acc.getAccNumber());
+        }
+
+        SpinnerValueFactory<Integer> valueFactory10 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, App.atm.billManager.getBills(10), 0, 1);
+        SpinnerValueFactory<Integer> valueFactory20 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, App.atm.billManager.getBills(20), 0, 1);
+        SpinnerValueFactory<Integer> valueFactory50 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, App.atm.billManager.getBills(50), 0, 1);
+        SpinnerValueFactory<Integer> valueFactory100 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, App.atm.billManager.getBills(100), 0, 1);
+        SpinnerValueFactory<Integer> valueFactory200 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, App.atm.billManager.getBills(200), 0, 1);
+
+        valueFactory10.valueProperty().addListener((observable, oldValue, newValue) -> updateBalance());
+        valueFactory20.valueProperty().addListener((observable, oldValue, newValue) -> updateBalance());
+        valueFactory50.valueProperty().addListener((observable, oldValue, newValue) -> updateBalance());
+        valueFactory100.valueProperty().addListener((observable, oldValue, newValue) -> updateBalance());
+        valueFactory200.valueProperty().addListener((observable, oldValue, newValue) -> updateBalance());
+
+        field10.setValueFactory(valueFactory10);
+        field20.setValueFactory(valueFactory20);
+        field50.setValueFactory(valueFactory50);
+        field100.setValueFactory(valueFactory100);
+        field200.setValueFactory(valueFactory200);
+
+        field10.getValueFactory().setValue(0);
+        field20.getValueFactory().setValue(0);
+        field50.getValueFactory().setValue(0);
+        field100.getValueFactory().setValue(0);
+        field200.getValueFactory().setValue(0);
+    }
 
     public void gotoHome() throws IOException {
         Navigator.gotoPage("MainATM", backBtn);
     }
 
-    public void submit() {
+    private int updateBalance(){
+        int balance = field10.getValue() * 10 + field20.getValue() * 20 + field50.getValue() * 50 + field100.getValue() * 100 + field200.getValue() * 200;
+        balanceLabel.setText(String.valueOf(balance) + "€");
+        return balance;
     }
-    
+
+    public void submit() {
+        if (balanceLabel.getText().equals("0€")){
+            errLabel.setText("La cantidad no puede ser 0");
+            return;
+        } else if (accSelect.getValue() == null){
+            errLabel.setText("Selecciona una cuenta");
+            return;
+        }
+        Account acc = App.atm.accManager.getAccountById(accSelect.getValue());
+        Operation opp = App.atm.oppManager.createOperation("withdraw", acc, null, updateBalance());
+        App.atm.accManager.getAccountById(accSelect.getValue()).addOperation(opp);
+        App.atm.accManager.getAccountById(accSelect.getValue()).extractMoney(updateBalance());
+        HashMap<Integer, Integer> bills = new HashMap<>();
+        bills.put(10, field10.getValue());
+        bills.put(20, field20.getValue());
+        bills.put(50, field50.getValue());
+        bills.put(100, field100.getValue());
+        bills.put(200, field200.getValue());
+        App.atm.billManager.extractBills(bills);
+    }
+
 }

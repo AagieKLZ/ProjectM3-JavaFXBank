@@ -32,10 +32,15 @@ public class CardManager {
 
     /**
      * Saves the cards to a file
-     * @param card
      */
     public void saveCards(){
         CardFileReader cardFileReader = new CardFileReader();
         cardFileReader.writeLines(this.cardList);
+    }
+
+    public Card createCard(int PIN, CurrentAccount account){
+        Card card = new Card(PIN, account);
+        this.cardList.add(card);
+        return card;
     }
 }
