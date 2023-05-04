@@ -66,7 +66,6 @@ public class AccountsController implements Initializable {
         CurrentAccount acc2 = new CurrentAccount(1, 12, user);
         ArrayList<Account> accList = App.atm.getUser().getAccounts();
 
-
         Label defaultCard = new Label("Selecciona una cuenta");
         cardPanel.getChildren().add(defaultCard);
         for (Account account : accList) {
@@ -112,7 +111,7 @@ public class AccountsController implements Initializable {
             cardPanel.getChildren().clear();
             if (acc instanceof SavingAccount){
                 cardPanel.getChildren().add(new Label("Esta cuenta no admite tarjetas"));
-            } else {
+            } else if (acc instanceof CurrentAccount) {
                 CurrentAccount currentAcc = (CurrentAccount) acc;
                 ArrayList<Card> cards = currentAcc.getCards();
                 //cards.add(new Card(1234, currentAcc));
@@ -122,7 +121,6 @@ public class AccountsController implements Initializable {
                 }
             }
             ArrayList<Operation> operations = acc.getOperations();
-            System.out.println(operations);
             operationPanel.getChildren().clear();
             for (Operation opp : operations){
                 HBox oppLine = createOppBox(opp);
@@ -140,7 +138,6 @@ public class AccountsController implements Initializable {
     private VBox createCardBox(Card card){
         VBox cardBox = new VBox();
         cardBox.setBackground(new Background(new BackgroundFill(javafx.scene.paint.Color.web("#001370"), new CornerRadii(5), null)));
-        System.out.println(card.getCardNumber());
         String cardNumber = String.valueOf(card.getCardNumber());
         Label cardLabel = new Label("**** " + cardNumber.substring(cardNumber.length() - 4));
         cardLabel.setTextFill(Paint.valueOf("white"));

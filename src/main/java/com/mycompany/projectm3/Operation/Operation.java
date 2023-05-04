@@ -49,6 +49,11 @@ public class Operation {
      * @return true if the operation belongs to the account
      */
     public boolean belongs(Account account){
+        if (this.source == null){
+            return this.target.equals(account);
+        } else if (this.target == null){
+            return this.source.equals(account);
+        }
         return this.source.equals(account) || this.target.equals(account);
     }
 

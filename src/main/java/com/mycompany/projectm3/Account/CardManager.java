@@ -16,19 +16,9 @@ public class CardManager {
      * Constructor of the class
      */
     public CardManager(){
-        this.cardList = new ArrayList<>();
-        /*TODO - Add the filereader here*/
+        this.cardList = new CardFileReader().readLines();
     }
 
-    /**
-     * Creates a card and assigns it to an account
-     * @param account
-     * @param pin
-     */
-    public void assignCard(CurrentAccount account, int pin){
-        Card card = new Card(pin, account);
-        account.addCard(card);
-    }
 
     /**
      * Saves the cards to a file
@@ -40,7 +30,14 @@ public class CardManager {
 
     public Card createCard(int PIN, CurrentAccount account){
         Card card = new Card(PIN, account);
-        this.cardList.add(card);
         return card;
+    }
+
+    public void addCard(Card card){
+        this.cardList.add(card);
+    }
+
+    public ArrayList<Card> getCards() {
+        return cardList;
     }
 }

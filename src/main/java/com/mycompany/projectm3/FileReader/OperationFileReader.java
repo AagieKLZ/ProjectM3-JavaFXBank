@@ -1,7 +1,9 @@
 package com.mycompany.projectm3.FileReader;
 
+import com.mycompany.projectm3.Account.Account;
 import com.mycompany.projectm3.Operation.Operation;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -25,10 +27,28 @@ public class OperationFileReader extends FileReader {
     public ArrayList<Operation> readLines(){
         ArrayList<String> lines = this.read();
         ArrayList<Operation> operations = new ArrayList<>();
+        ArrayList<Account> accounts = new AccountFileReader().readLines();
         for (String line : lines){
-            /*TODO - Read lines*/
+            String[] lineSplit = line.split(",");
+            String oppType = lineSplit[0];
+            int source_id = Integer.parseInt(lineSplit[1]);
+            int target_id = Integer.parseInt(lineSplit[2]);
+            float amount = Float.parseFloat(lineSplit[3]);
+            long timestamp = Long.parseLong(lineSplit[4]);
+            Account source = null;
+            Account target = null;
+            for (Account acc : accounts){
+                if (acc.getAccountId() == source_id){
+                    source = acc;
+                }
+                if (acc.getAccountId() == target_id){
+                    target = acc;
+                }
+            }
+            Operation operation = new Operation(oppType, source, target, amount, timestamp);
+            operations.add(operation);
         }
-        return null;
+        return operations;
     }
 
     /**

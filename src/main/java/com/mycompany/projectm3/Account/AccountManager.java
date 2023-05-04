@@ -45,12 +45,14 @@ public class AccountManager {
         Account acc;
         switch (accountType.toLowerCase()){
             case "current":
-                acc = new CurrentAccount(this.accountList.size() + 1, 0.0F, owner);
+                acc = new CurrentAccount(this.accountList.size(), 0.0F, owner);
                 this.accountList.add(acc);
+                saveToFile();
                 return acc;
             case "savings":
-                acc = new SavingAccount(this.accountList.size() + 1, 0, owner);
+                acc = new SavingAccount(this.accountList.size(), 0, owner);
                 this.accountList.add(acc);
+                saveToFile();
                 return acc;
             default:
                 return null;
@@ -63,7 +65,7 @@ public class AccountManager {
      */
     public void saveToFile(){
         AccountFileReader accountFileReader = new AccountFileReader();
-        accountFileReader.writeLines(this.accountList, "generate");
+        accountFileReader.writeLines(this.accountList);
     }
 
     public ArrayList<Account> getAccountList() {

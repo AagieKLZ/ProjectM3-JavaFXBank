@@ -24,10 +24,19 @@ public class UserFileReader extends FileReader {
     public ArrayList<User> readLines(){
         ArrayList<String> lines = this.read();
         ArrayList<User> users = new ArrayList<>();
-        for (String line : lines){
-            /*TODO - Read lines*/
+        for (int i = 0; i < lines.size(); i++){
+            String[] fields = lines.get(i).split(",");
+            String name = fields[0];
+            String email = fields[1];
+            int id = Integer.parseInt(fields[2]);
+            String password = fields[3];
+            boolean locked = Boolean.parseBoolean(fields[4]);
+            User user = new User(email, name, id);
+            user.setPassword(password);
+            user.setLocked(locked);
+            users.add(user);
         }
-        return null;
+        return users;
     }
 
     /**

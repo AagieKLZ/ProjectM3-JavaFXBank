@@ -19,7 +19,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        this.atm = new ATM();
+        atm = new ATM();
         scene = new Scene(loadFXML("welcome"), 640, 480);
         stage.setScene(scene);
         stage.setResizable(false);

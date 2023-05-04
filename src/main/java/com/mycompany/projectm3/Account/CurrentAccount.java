@@ -18,6 +18,7 @@ public class CurrentAccount extends Account {
     public CurrentAccount(int account_id, float balance, User owner){
         super(account_id, balance, owner);
         this.cards = new ArrayList<>();
+        this.accType = "Current";
     }
 
     /**
@@ -29,6 +30,7 @@ public class CurrentAccount extends Account {
     public CurrentAccount(int account_id, float balance, int ownerId, long accNumber){
         super(account_id, balance, ownerId, accNumber);
         this.cards = new ArrayList<>();
+        this.accType = "Current";
     }
 
     /**

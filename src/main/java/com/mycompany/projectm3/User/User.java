@@ -143,6 +143,10 @@ public class User {
         return isLocked;
     }
 
+    public void setLocked(boolean locked) {
+        isLocked = locked;
+    }
+
     /**
      * Returns the accounts of the user.
      * @return ArrayList<Account>

@@ -6,8 +6,10 @@ package com.mycompany.projectm3;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import com.mycompany.projectm3.Account.Account;
 import com.mycompany.projectm3.User.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -53,7 +55,29 @@ public class LogInController implements Initializable {
         if (username.getText() == "" || username.getText() == ""){
             errLabel.setText("Usuario o contraseña no válidos");
         } else {
-            App.atm.setUser(new User(username.getText(), username.getText(), 5));
+            User user = App.atm.userManager.LogIn(username.getText(), password.getText());
+            if (user == null){
+                errLabel.setText("Usuario o contraseña no válidos");
+                return;
+            }
+//            App.atm.setUser(new User(username.getText(), username.getText(), 5));
+
+            ArrayList<Account> accounts = App.atm.accManager.getAccountList();
+            ArrayList<Account> userAccounts = new ArrayList<>();
+            System.out.println("User ID: " + user.getId());
+            for (Account account : accounts) {
+                System.out.println("Account owner ID: " + account.getOwnerId());
+                if (account.getOwnerId() == user.getId()){
+                    userAccounts.add(account);
+                }
+            }
+            for (Account account : userAccounts) {
+                System.out.println("hhh" + account);
+            }
+
+            user.setAccounts(userAccounts);
+            App.atm.setUser(user);
+            System.out.println("User accounts" + user.getAccounts() + " Accs: " + userAccounts);
             Navigator.gotoPage("MainATM", signupBtn);
         }
     }

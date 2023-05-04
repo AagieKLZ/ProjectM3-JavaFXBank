@@ -17,7 +17,6 @@ public class ATMBillManager {
     public ATMBillManager(){
         BillFileReader billFileReader = new BillFileReader();
         this.bills = billFileReader.readLines();
-        System.out.println("Bills: " + this.bills);
         if (this.bills == null){
             this.bills = new HashMap<>();
         }

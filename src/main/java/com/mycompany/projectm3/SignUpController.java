@@ -61,10 +61,14 @@ public class SignUpController implements Initializable {
         String email = emailInput.getText();
         String pw = pwInput.getText();
         if (name.equals("") || email.equals("") || pw.equals("")){
-            errLabel.setText("Please fill all the fields");
+            errLabel.setText("Todos los campos son obligatorios");
         } else {
             errLabel.setText("");
-            User user = App.atm.userManager.createUser(name, email, pw);
+            if (App.atm.userManager.findUser(email)) {
+                errLabel.setText("Ya existe un usuario con ese email");
+                return;
+            }
+            User user = App.atm.userManager.createUser(email, name, pw);
             App.atm.setUser(user);
             Navigator.gotoPage("MainATM", signupBtn);
         }

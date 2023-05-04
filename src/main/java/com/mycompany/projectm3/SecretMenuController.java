@@ -59,7 +59,6 @@ public class SecretMenuController implements Initializable {
         field200.setValueFactory(valueFactory200);
 
         HashMap<Integer, Integer> bills = App.atm.billManager.getBills();
-        System.out.println(bills);
         field10.getValueFactory().setValue(bills.get(10));
         field20.getValueFactory().setValue(bills.get(20));
         field50.getValueFactory().setValue(bills.get(50));

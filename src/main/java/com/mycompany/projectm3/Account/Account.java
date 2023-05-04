@@ -6,6 +6,7 @@ import com.mycompany.projectm3.User.User;
 import com.mycompany.projectm3.lib.RandomNumberGenerator;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Represents an ATM account
@@ -18,6 +19,7 @@ public class Account {
     protected ArrayList<Operation> operations = new ArrayList<>();
     protected User owner;
     protected int ownerId;
+    protected String accType;
 
     /**
      * Constructor for Account
@@ -153,7 +155,7 @@ public class Account {
      */
     @Override
     public String toString() {
-        return String.format("%d,%f,%f,%d", this.account_id, this.balance, this.interest, this.owner.getId());
+        return String.format(Locale.US, "%d,%f,%d,%d,%s", this.account_id, this.balance, this.owner.getId(), this.accNumber, this.accType);
     }
 
 }

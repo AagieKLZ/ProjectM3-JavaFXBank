@@ -1,8 +1,10 @@
 package com.mycompany.projectm3.FileReader;
 
 import com.mycompany.projectm3.Account.Card;
+import com.mycompany.projectm3.lib.DateCalculator;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Reads and writes from the cards.csv file
@@ -25,9 +27,16 @@ public class CardFileReader extends FileReader{
         ArrayList<String> lines = this.read();
         ArrayList<Card> cards = new ArrayList<>();
         for (String line : lines){
-            /*TODO - Read lines*/
+            String[] lineSplit = line.split(",");
+            long cardNumber = Long.parseLong(lineSplit[0]);
+            int securityNumber = Integer.parseInt(lineSplit[1]);
+            Date expirationDate = DateCalculator.stringToDate(lineSplit[2]);
+            int PIN = Integer.parseInt(lineSplit[3]);
+            int acc_id = Integer.parseInt(lineSplit[4]);
+            Card card = new Card(cardNumber, securityNumber, expirationDate, PIN, acc_id);
+            cards.add(card);
         }
-        return null;
+        return cards;
     }
 
     /**

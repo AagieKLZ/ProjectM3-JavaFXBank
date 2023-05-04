@@ -13,7 +13,6 @@ import java.util.HashMap;
  * @author Carlos Carpio
  */
 public class UserManager {
-    private PasswordHasher hasher;
     private ArrayList<User> userList;
     private HashMap<Integer, Integer> attempts;
 
@@ -21,7 +20,6 @@ public class UserManager {
      * Creates a new user manager and loads the users from the file.
      */
     public UserManager(){
-        this.hasher = new PasswordHasher();
         this.userList = new UserFileReader().readLines();
         if (this.userList == null){
             this.userList = new ArrayList<>();
@@ -47,24 +45,25 @@ public class UserManager {
      * @param password
      */
     public User createUser(String email, String name, String password){
-        User user = new User(email, name, userList.size()+1);
+        User user = new User(email, name, userList.size());
         user.setPassword(password);
         this.userList.add(user);
+        saveUsers();
         return user;
     }
 
     /**
      * Finds a user by its name
-     * @param name
+     * @param email
      * @return User if found, null otherwise
      */
-    public int findUser(String name){
+    public boolean findUser(String email){
         for (int i = 0; i < this.userList.size(); i++){
-            if (name.equals(this.userList.get(i).getName())){
-                return i;
+            if (email.equals(this.userList.get(i).getEmail())){
+                return true;
             }
         }
-        return -1;
+        return false;
     }
 
     /**
@@ -75,6 +74,7 @@ public class UserManager {
      */
     public User LogIn(String email, String Password){
         for (User user: userList){
+            System.out.println(user.getEmail() + " " + user.getPassword());
             if (user.getEmail().equals(email)){
                 if (user.getPassword().equals(Password)){
                     return user;
@@ -90,6 +90,7 @@ public class UserManager {
      */
     public void lockUser(User user){
         user.lock();
+        saveUsers();
     }
 
     /**
@@ -98,6 +99,7 @@ public class UserManager {
      */
     public void unlockUser(User user){
         user.unlock();
+        saveUsers();
     }
 
     /**

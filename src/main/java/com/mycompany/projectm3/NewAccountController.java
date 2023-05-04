@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.mycompany.projectm3.Account.Account;
+import com.mycompany.projectm3.Account.Card;
 import com.mycompany.projectm3.Account.CurrentAccount;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -95,6 +96,10 @@ public class NewAccountController implements Initializable {
 
     public void submit() {
         String accTypeValue = accType.getValue();
+        if (accTypeValue == null) {
+            PINErr.setText("Selecciona un tipo de cuenta");
+            return;
+        }
         int pin = 0;
         double money = 0;
         boolean createCard = false;
@@ -128,7 +133,10 @@ public class NewAccountController implements Initializable {
         }
         Account acc = App.atm.accManager.createAccount(accTypeValue == "Ahorro" ? "Savings" : "Current", App.atm.getUser());
         if (createCard && acc instanceof CurrentAccount) {
-            App.atm.cardManager.createCard(pin, (CurrentAccount) acc);
+            Card card = App.atm.cardManager.createCard(pin, (CurrentAccount) acc);
+            card.setAccount((CurrentAccount) acc);
+            App.atm.cardManager.addCard(card);
+            App.atm.cardManager.saveCards();
         }
         if (addStartingMoney.isSelected()) {
             acc.addMoney((float) money);

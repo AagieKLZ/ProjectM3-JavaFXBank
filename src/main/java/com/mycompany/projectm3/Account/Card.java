@@ -1,8 +1,10 @@
 package com.mycompany.projectm3.Account;
 
+import com.mycompany.projectm3.FileReader.AccountFileReader;
 import com.mycompany.projectm3.lib.DateCalculator;
 import com.mycompany.projectm3.lib.RandomNumberGenerator;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -13,8 +15,9 @@ public class Card {
     private long cardNumber;
     private int securityNumber;
     private Date expirationDate;
-    private CurrentAccount account;
+    private Account account;
     private int PIN;
+    private int acc_id;
     private boolean valid = true;
 
     /**
@@ -28,6 +31,7 @@ public class Card {
         this.securityNumber = RandomNumberGenerator.generateSecurityNumber();
         this.cardNumber = RandomNumberGenerator.generateCardNumber();
         this.expirationDate = DateCalculator.addYears(1);
+        this.acc_id = account.getAccountId();
     }
 
     /**
@@ -36,14 +40,25 @@ public class Card {
      * @param securityNumber
      * @param expirationDate
      * @param PIN
-     * @param valid
+     * @param acc_id
      */
-    public Card(long cardNumber, int securityNumber, Date expirationDate, int PIN, boolean valid) {
+    public Card(long cardNumber, int securityNumber, Date expirationDate, int PIN, int acc_id) {
         this.cardNumber = cardNumber;
         this.securityNumber = securityNumber;
         this.expirationDate = expirationDate;
         this.PIN = PIN;
-        this.valid = valid;
+        this.acc_id = acc_id;
+        this.valid = this.isValid();
+        ArrayList<Account> accounts = new AccountFileReader().readLines();
+        for (Account account : accounts){
+            if (account.getAccountId() == acc_id){
+                this.account = account;
+            }
+        }
+    }
+
+    public int getAcc_id() {
+        return acc_id;
     }
 
     /**
@@ -132,10 +147,13 @@ public class Card {
      */
     @Override
     public String toString() {
+        if (this.account == null){
+            return String.format("%d,%d,%s,%d,%d", this.cardNumber, this.securityNumber, DateCalculator.timeToString(this.expirationDate), this.PIN, 0);
+        }
         return String.format("%d,%d,%s,%d,%d", this.cardNumber, this.securityNumber, DateCalculator.timeToString(this.expirationDate), this.PIN, this.account.getAccountId());
     }
 
-    public CurrentAccount getAccount() {
+    public Account getAccount() {
         return account;
     }
 

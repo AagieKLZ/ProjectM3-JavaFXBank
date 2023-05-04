@@ -84,6 +84,8 @@ public class CreateCardController implements Initializable {
             this.card.setPIN(Integer.parseInt(pinField.getText()));
             this.card.setAccount((CurrentAccount) App.atm.accManager.getAccountById((Long.parseLong(accSelect.getValue().toString()))));
             ((CurrentAccount) App.atm.accManager.getAccountById((Long.parseLong(accSelect.getValue().toString())))).addCard(this.card);
+            App.atm.cardManager.addCard(this.card);
+            App.atm.cardManager.saveCards();
             Navigator.gotoPage("MainATM", backBtn);
         }
 

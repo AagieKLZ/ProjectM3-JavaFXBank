@@ -15,8 +15,7 @@ public class OperationManager {
      * Creates a new OperationManager
      */
     public OperationManager(){
-        /* TODO - Read from file */
-        this.operations = new ArrayList<Operation>();
+        this.operations = new OperationFileReader().readLines();
     }
 
     /**
@@ -29,6 +28,7 @@ public class OperationManager {
     public Operation createOperation(String type, Account source, Account target, float amount) {
         Operation opp = new Operation(type, source, target, amount);
         this.operations.add(opp);
+        saveOperations();
         return opp;
     }
 
