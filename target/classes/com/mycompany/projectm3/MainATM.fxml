@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectm3.MainATMController">
     <children>
     <ImageView fitHeight="24.0" fitWidth="125.0" layoutX="8.0" layoutY="8.0">
          <image>
-            <Image url="@../../../../../../../../Baixades/fxbank-removebg-preview.png" />
+            <Image url="@../../../assets/fxbank-removebg-preview.png" />
          </image>
       </ImageView>
       <VBox alignment="TOP_CENTER" layoutX="34.0" layoutY="285.0" spacing="10.0">
@@ -21,33 +21,33 @@
             <HBox alignment="CENTER" spacing="15.0" />
          </children>
       </VBox>
-      <HBox alignment="CENTER" layoutY="109.0" prefHeight="57.0" prefWidth="600.0" spacing="20.0">
+      <HBox alignment="CENTER" layoutX="21.0" layoutY="113.0" prefHeight="71.0" prefWidth="600.0" spacing="20.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="181.0" style="-fx-background-color: white; -fx-text-fill: #3423A6; -fx-border-color: #3423A6; -fx-border-radius: 10px;" text="Consultar Saldo" />
-            <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="181.0" style="-fx-background-color: white; -fx-text-fill: #3423A6; -fx-border-color: #3423A6; -fx-border-radius: 10px;" text="Consultar Cuentas" />
-            <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="181.0" style="-fx-background-color: white; -fx-text-fill: #3423A6; -fx-border-color: #3423A6; -fx-border-radius: 10px;" text="Consultar Movimientos" />
+            <Button fx:id="checkAccs" mnemonicParsing="false" onAction="#gotoAccounts" prefHeight="57.0" prefWidth="240.0" style="-fx-background-color: white; -fx-text-fill: #3423A6; -fx-border-color: #3423A6; -fx-border-radius: 10px;" text="Consultar Cuentas" />
+            <Button fx:id="checkMovements" mnemonicParsing="false" onAction="#gotoMovements" prefHeight="57.0" prefWidth="240.0" style="-fx-background-color: white; -fx-text-fill: #3423A6; -fx-border-color: #3423A6; -fx-border-radius: 10px;" text="Consultar Movimientos" />
          </children>
       </HBox>
-      <Button layoutX="479.0" layoutY="8.0" mnemonicParsing="false" style="-fx-background-color: #E54210; -fx-text-fill: white; -fx-font-weight: bold;" text="Cerrar Sesion" AnchorPane.rightAnchor="8.0" />
-      <Label layoutX="223.0" layoutY="61.0" text="Tus Cuentas">
+      <Button fx:id="logoutBtn" layoutX="479.0" layoutY="8.0" mnemonicParsing="false" onAction="#signOut" style="-fx-background-color: #E54210; -fx-text-fill: white; -fx-font-weight: bold;" text="Cerrar Sesion" AnchorPane.rightAnchor="8.0" />
+      <Label fx:id="welcomeLabel" alignment="CENTER" layoutX="-1.0" layoutY="59.0" prefHeight="30.0" prefWidth="640.0" text="Bienvenido," textAlignment="CENTER">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
       <Button layoutX="273.0" layoutY="7.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-border-color: #E54210; -fx-border-radius: 5px; -fx-text-fill: #E54210; -fx-font-weight: 500;" text="Solicitar Baja del Servicio" />
-      <HBox alignment="CENTER" layoutX="-1.0" layoutY="192.0" prefHeight="76.0" prefWidth="600.0" spacing="25.0" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="192.0">
+      <HBox alignment="CENTER" layoutY="197.0" prefHeight="116.0" prefWidth="640.0" spacing="25.0" AnchorPane.bottomAnchor="167.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="197.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="191.0" style="-fx-text-fill: white; -fx-background-color: #3423A6; -fx-font-size: 15;" text="Nueva Cuenta" />
-            <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="191.0" style="-fx-text-fill: white; -fx-background-color: #3423A6; -fx-font-size: 15;" text="Nueva Tarjeta" />
+            <Button fx:id="createAcc" mnemonicParsing="false" onAction="#gotoCreateAccount" prefHeight="55.0" prefWidth="240.0" style="-fx-text-fill: white; -fx-background-color: #3423A6; -fx-font-size: 15;" text="Nueva Cuenta" />
+            <Button fx:id="createCard" mnemonicParsing="false" onAction="#gotoCreateCard" prefHeight="55.0" prefWidth="240.0" style="-fx-text-fill: white; -fx-background-color: #3423A6; -fx-font-size: 15;" text="Nueva Tarjeta" />
          </children>
       </HBox>
-      <HBox layoutX="148.0" layoutY="325.0" spacing="25.0">
+      <HBox layoutX="87.0" layoutY="377.0" spacing="25.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="139.0" style="-fx-background-color: white; -fx-text-fill: #3423A6; -fx-border-color: #3423A6; -fx-border-radius: 10px;" text="Extraer" />
-            <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="139.0" style="-fx-background-color: white; -fx-text-fill: #3423A6; -fx-border-color: #3423A6; -fx-border-radius: 10px;" text="Ingresar" />
+            <Button fx:id="withdrawBtn" mnemonicParsing="false" onAction="#gotoWithdraw" prefHeight="57.0" prefWidth="139.0" style="-fx-background-color: white; -fx-text-fill: #3423A6; -fx-border-color: #3423A6; -fx-border-radius: 10px;" text="Extraer" />
+            <Button fx:id="transferBtn" mnemonicParsing="false" onAction="#gotoTransfer" prefHeight="57.0" prefWidth="139.0" style="-fx-background-color: white; -fx-text-fill: #3423A6; -fx-border-color: #3423A6; -fx-border-radius: 10px;" text="Transferir" />
+            <Button fx:id="insertBtn" mnemonicParsing="false" onAction="#gotoInsert" prefHeight="57.0" prefWidth="139.0" style="-fx-background-color: white; -fx-text-fill: #3423A6; -fx-border-color: #3423A6; -fx-border-radius: 10px;" text="Ingresar" />
          </children>
       </HBox>
-      <Label layoutX="221.0" layoutY="289.0" text="Operaciones" textAlignment="CENTER">
+      <Label layoutX="242.0" layoutY="322.0" text="Operaciones" textAlignment="CENTER">
          <font>
             <Font size="25.0" />
          </font>

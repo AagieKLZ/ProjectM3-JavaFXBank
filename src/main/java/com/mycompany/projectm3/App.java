@@ -1,5 +1,6 @@
 package com.mycompany.projectm3;
 
+import com.mycompany.projectm3.ATM.ATM;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,11 +15,14 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    public static ATM atm;
 
     @Override
     public void start(Stage stage) throws IOException {
+        this.atm = new ATM();
         scene = new Scene(loadFXML("welcome"), 640, 480);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 
