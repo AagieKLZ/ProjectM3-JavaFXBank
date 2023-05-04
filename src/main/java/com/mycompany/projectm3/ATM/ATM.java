@@ -9,6 +9,9 @@ import com.mycompany.projectm3.User.UserManager;
 
 import java.util.ArrayList;
 
+/**
+ * Main class of the ATM package. It contains all the managers and the user that is logged in.
+ */
 public class ATM {
     public ATMBillManager billManager;
     public OperationManager oppManager;
@@ -17,6 +20,9 @@ public class ATM {
     public CardManager cardManager;
     User user = null;
 
+    /**
+     * Constructor of the ATM class. It creates all the managers and assigns the cards and operations to the accounts after they're read from file.
+     */
     public ATM(){
         this.billManager = new ATMBillManager();
         this.user = null;
@@ -28,6 +34,9 @@ public class ATM {
         assignOperations();
     }
 
+    /**
+     * Assigns the cards to the accounts after they're read from file.
+     */
     private void assignCards() {
         ArrayList<Card> cards = this.cardManager.getCards();
         for (Account acc : this.accManager.getAccountList()) {
@@ -41,6 +50,9 @@ public class ATM {
         }
     }
 
+    /**
+     * Assigns the operations to the accounts after they're read from file.
+     */
     private void assignOperations(){
         ArrayList<Operation> operations = this.oppManager.getOperations();
         for (Account acc : this.accManager.getAccountList()) {
@@ -52,10 +64,18 @@ public class ATM {
         }
     }
 
+    /**
+     * Getter for the user.
+     * @return The user that is logged in.
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     * Setter for the user.
+     * @param user The user that is logged in.
+     */
     public void setUser(User user) {
         this.user = user;
     }

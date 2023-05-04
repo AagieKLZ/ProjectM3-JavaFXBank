@@ -54,17 +54,25 @@ public class Account {
         }
     }
 
+    /**
+     * Gets the account owner
+     * @return User the account owner
+     */
     public User getOwner(){
         return this.owner;
     }
 
+    /**
+     * Returns the account number
+     * @return the account number
+     */
     public long getAccNumber() {
         return accNumber;
     }
 
     /**
      * Registers an operation in the account
-     * @param operation
+     * @param operation the operation to register
      */
     public void addOperation(Operation operation){
         this.operations.add(operation);
@@ -87,13 +95,6 @@ public class Account {
         return this.ownerId;
     }
 
-    /**
-     * Returns the account owner
-     * @param newInterest
-     */
-    public void setInterest(float newInterest){
-        this.interest = newInterest;
-    }
 
     /**
      * Returns the account balance
@@ -142,7 +143,7 @@ public class Account {
     /**
      * Equals method to compare accounts
      * @param obj
-     * @return
+     * @return true if the accounts are equal, false otherwise
      */
     @Override
     public boolean equals(Object obj){

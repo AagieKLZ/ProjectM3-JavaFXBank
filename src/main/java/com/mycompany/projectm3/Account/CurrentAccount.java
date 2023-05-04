@@ -11,9 +11,9 @@ public class CurrentAccount extends Account {
 
     /**
      * Constructor for CurrentAccount
-     * @param account_id
-     * @param balance
-     * @param owner
+     * @param account_id Account id
+     * @param balance Balance of the account
+     * @param owner Owner of the account
      */
     public CurrentAccount(int account_id, float balance, User owner){
         super(account_id, balance, owner);
@@ -23,9 +23,9 @@ public class CurrentAccount extends Account {
 
     /**
      * Constructor for CurrentAccount from file
-     * @param account_id
-     * @param balance
-     * @param ownerId
+     * @param account_id Account id
+     * @param balance Balance of the account
+     * @param ownerId Owner id
      */
     public CurrentAccount(int account_id, float balance, int ownerId, long accNumber){
         super(account_id, balance, ownerId, accNumber);
@@ -35,26 +35,16 @@ public class CurrentAccount extends Account {
 
     /**
      * Adds a card to the account
-     * @param card
+     * @param card Card to add
      */
     public void addCard(Card card){
         this.cards.add(card);
     }
 
     /**
-     * Deletes a card from the account
-     * @param card
+     * Lists the cards of the account
+     * @return List with the cards
      */
-    public void deleteCard(Card card){
-        for (int i = 0; i <
-        this.cards.size(); i++){
-            if (this.cards.get(i).equals(card)){
-                this.cards.remove(i);
-                break;
-            }
-        }
-    }
-
     public ArrayList<Card> getCards() {
         return cards;
     }

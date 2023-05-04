@@ -87,7 +87,7 @@ public class User {
 
     /**
      * Returns the name of the user.
-     * @return
+     * @return String name
      */
     public String getName(){
         return this.name;
@@ -103,7 +103,7 @@ public class User {
 
     /**
      * Sets the name of the user.
-     * @param name
+     * @param name String name
      */
     public void setName(String name) {
         this.name = name;
@@ -111,7 +111,7 @@ public class User {
 
     /**
      * Sets the accounts of the user.
-     * @param accounts
+     * @param accounts ArrayList accounts
      */
     public void setAccounts(ArrayList<Account> accounts)  {
         this.accounts = accounts;
@@ -126,8 +126,8 @@ public class User {
     }
     
     /**
-     * 
-     * @param email 
+     * Sets the user email
+     * @param email email
      */
     public void setEmail(String email) {
         this.email = email;
@@ -142,13 +142,17 @@ public class User {
         return isLocked;
     }
 
+    /**
+     * Sets the user locked
+     * @param locked locked
+     */
     public void setLocked(boolean locked) {
         isLocked = locked;
     }
 
     /**
      * Returns the accounts of the user.
-     * @return ArrayList<Account>
+     * @return ArrayList accounts
      */
     public ArrayList<Account> getAccounts() {
         return accounts;
@@ -163,6 +167,11 @@ public class User {
         return String.format("%s,%s,%d,%s,%s", this.email, this.name, this.id, this.password, this.isLocked);
     }
 
+    /**
+     * Returns if the user is equal to another user object.
+     * @param obj User
+     * @return boolean
+     */
     @Override
     public boolean equals(Object obj){
         if (!(obj instanceof User)){

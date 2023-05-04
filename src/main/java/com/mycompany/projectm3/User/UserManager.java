@@ -109,6 +109,11 @@ public class UserManager {
         saveUsers();
     }
 
+    /**
+     * Gets the number of attempts of a user.
+     * @param email of the user
+     * @return number of attempts
+     */
     public int getAttempts(String email){
         return this.attempts.get(email);
     }
@@ -121,6 +126,10 @@ public class UserManager {
         fileReader.writeLines(this.userList);
     }
 
+    /**
+     * Deletes a user.
+     * @param user to be deleted
+     */
     public void deleteUser(User user){
         this.userList.remove(user);
         saveUsers();

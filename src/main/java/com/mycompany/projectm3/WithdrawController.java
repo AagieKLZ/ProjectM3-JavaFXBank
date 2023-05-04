@@ -85,16 +85,28 @@ public class WithdrawController implements Initializable {
         field200.getValueFactory().setValue(0);
     }
 
+    /**
+     * Goes to the home page
+     * @throws IOException if the fxml file is not found
+     */
     public void gotoHome() throws IOException {
         Navigator.gotoPage("MainATM", backBtn);
     }
 
+    /**
+     * Updates the balance label when the user changes the value of the spinners
+     * @return the balance
+     */
     private int updateBalance(){
         int balance = field10.getValue() * 10 + field20.getValue() * 20 + field50.getValue() * 50 + field100.getValue() * 100 + field200.getValue() * 200;
         balanceLabel.setText(String.valueOf(balance) + "€");
         return balance;
     }
 
+    /**
+     * Submits the withdraw
+     * @throws IOException if the fxml file is not found
+     */
     public void submit() throws IOException {
         if (balanceLabel.getText().equals("0€")){
             errLabel.setText("La cantidad no puede ser 0");

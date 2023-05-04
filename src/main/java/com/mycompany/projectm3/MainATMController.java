@@ -55,7 +55,10 @@ public class MainATMController implements Initializable {
     Button profileBtn;
 
     ArrayList<String> keys = new ArrayList<>();
-    
+
+    /**
+     * Initializes the controller class. Defines the controls to open the secret menu
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         welcomeLabel.setText("Welcome, " + App.atm.getUser().getName());
@@ -79,40 +82,76 @@ public class MainATMController implements Initializable {
             }
         });
     }
-    
+
+    /**
+     * Goes to the movements page
+     * @throws IOException if the fxml file is not found
+     */
     public void gotoMovements() throws IOException {
         Navigator.gotoPage("Movements", checkMovements);
     }
-    
+
+    /**
+     * Goes to the create account page
+     * @throws IOException if the fxml file is not found
+     */
     public void gotoCreateAccount() throws IOException {
         Navigator.gotoPage("NewAccount", createAcc);
     }
-    
+
+    /**
+     * Goes to the accounts page
+     * @throws IOException if the fxml file is not found
+     */
     public void gotoAccounts() throws IOException{
         Navigator.gotoPage("Accounts", checkAccs);
     }
-    
+
+    /**
+     * Goes to the create card page
+     * @throws IOException if the fxml file is not found
+     */
     public void gotoCreateCard() throws IOException {
         Navigator.gotoPage("CreateCard", createCard);
     }
-    
+
+    /**
+     * Goes to the withdraw page
+     * @throws IOException if the fxml file is not found
+     */
     public void gotoWithdraw() throws IOException {
         Navigator.gotoPage("Withdraw", withdrawBtn);
     }
-    
+
+    /**
+     * Goes to the insert page
+     * @throws IOException if the fxml file is not found
+     */
     public void gotoInsert() throws IOException {
         Navigator.gotoPage("Insert", insertBtn);
     }
 
+    /**
+     * Goes to the transfer page
+     * @throws IOException if the fxml file is not found
+     */
     public void gotoTransfer() throws IOException {
         Navigator.gotoPage("Transfer", insertBtn);
     }
 
+    /**
+     * Signs out the user and returns to the welcome page
+     * @throws IOException if the fxml file is not found
+     */
     public void signOut() throws IOException{
         App.atm.setUser(null);
         Navigator.gotoPage("welcome", logoutBtn);
     }
 
+    /**
+     * Goes to the profile page
+     * @throws IOException if the fxml file is not found
+     */
     public void gotoProfile() throws IOException{
         Navigator.gotoPage("Profile", profileBtn);
     }

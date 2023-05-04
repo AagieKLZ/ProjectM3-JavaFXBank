@@ -42,8 +42,12 @@ public class InsertCardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
+    /**
+     * Try to log in with the given card number and PIN
+     * @throws IOException if the page cannot be loaded
+     */
     @FXML
     private void logIn() throws IOException {
         long cardNumber;
@@ -71,6 +75,10 @@ public class InsertCardController implements Initializable {
         Navigator.gotoPage("MainATM", backBtn);
     }
 
+    /**
+     * Go back to the welcome page
+     * @throws IOException if the page cannot be loaded
+     */
     @FXML
     protected void gotoHome() throws IOException{
         Navigator.gotoPage("welcome", backBtn);

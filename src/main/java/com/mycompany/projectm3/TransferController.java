@@ -49,11 +49,19 @@ public class TransferController implements Initializable {
             accSelect.getItems().add(acc.getAccNumber());
         }
     }
-    
+
+    /**
+     * Goes to the home page
+     * @throws IOException if the fxml file is not found
+     */
     public void gotoHome() throws IOException {
         Navigator.gotoPage("MainATM", backBtn);
     }
 
+    /**
+     * Submits the form and executes the transfer
+     * @throws IOException if the fxml file is not found
+     */
     public void submit() throws IOException{
         Account target = null;
         try {

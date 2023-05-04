@@ -28,11 +28,21 @@ public class CardManager {
         cardFileReader.writeLines(this.cardList);
     }
 
+    /**
+     * Creates a card
+     * @param PIN PIN of the card
+     * @param account Account of the card
+     * @return Card
+     */
     public Card createCard(int PIN, CurrentAccount account){
-        Card card = new Card(PIN, account);
-        return card;
+        return new Card(PIN, account);
     }
 
+    /**
+     * Finds a card by its number
+     * @param cardNumber Number of the card
+     * @return Card if found, null if not
+     */
     public Card findCard(long cardNumber){
         for (Card card : this.cardList){
             if (card.getCardNumber() == cardNumber){
@@ -42,10 +52,18 @@ public class CardManager {
         return null;
     }
 
+    /**
+     * Adds a card to the list
+     * @param card Card to add
+     */
     public void addCard(Card card){
         this.cardList.add(card);
     }
 
+    /**
+     * Lists all the cards
+     * @return ArrayList of cards
+     */
     public ArrayList<Card> getCards() {
         return cardList;
     }

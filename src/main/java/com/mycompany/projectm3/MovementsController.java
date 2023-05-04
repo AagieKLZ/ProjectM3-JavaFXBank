@@ -42,22 +42,13 @@ public class MovementsController implements Initializable {
     @FXML
     Button backBtn;
 
+    /**
+     * Renders the movements of the user
+     * @param url url
+     * @param rb resource bundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        /*User user = new User("c@c", "acb", 5);
-        Account acc = new Account(1234, 50, user);
-        ArrayList<Operation> operations = new ArrayList<>();
-        for (int i = 0; i < 5; i++){
-            Operation op = new Operation("deposit", acc, null, 50);
-            Operation op2 = new Operation("withdraw", acc, null, -50);
-            Operation op3 = new Operation("transfer", acc, null, 100);
-            acc.addOperation(op);
-            acc.addOperation(op2);
-            acc.addOperation(op3);
-            operations.add(op);
-            operations.add(op2);
-            operations.add(op3);
-        }*/
         User user = App.atm.getUser();
         ArrayList<Operation> operations = new ArrayList<Operation>();
         for (Account acc : user.getAccounts()) {
@@ -109,6 +100,11 @@ public class MovementsController implements Initializable {
 
         scrollPane.setContent(blocks);
     }
+
+    /**
+     * Goes back to the home page
+     * @throws IOException if the page doesn't exist
+     */
     public void gotoHome() throws IOException {
         Navigator.gotoPage("MainATM", backBtn);
     }

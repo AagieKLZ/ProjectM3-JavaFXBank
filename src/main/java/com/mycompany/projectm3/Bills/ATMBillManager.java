@@ -33,7 +33,7 @@ public class ATMBillManager {
 
     /**
      * Returns the bills available in the ATM
-     * @return HashMap<Integer, Integer> bills
+     * @return HashMap bills
      */
     public HashMap<Integer, Integer> getBills(){
         return bills;
@@ -95,14 +95,6 @@ public class ATMBillManager {
     }
 
     /**
-     * Gets the max available amount of money in the ATM
-     * @return max available amount of money
-     */
-    public int getMaxAvailable(){
-        return max_available;
-    }
-
-    /**
      * Saves the bills in the ATM to the file
      */
     public void saveBills(){
@@ -110,6 +102,10 @@ public class ATMBillManager {
         billFileReader.writeLines(this.bills);
     }
 
+    /**
+     * Extracts multiple bills from the ATM
+     * @param bills HashMap bills
+     */
     public void extractBills(HashMap<Integer, Integer> bills){
         for (int key : bills.keySet()) {
             for (int i = 0; i < bills.get(key); i++) {
@@ -118,6 +114,10 @@ public class ATMBillManager {
         }
     }
 
+    /**
+     * Adds multiple bills to the ATM
+     * @param bills HashMap bills
+     */
     public void insertBills(HashMap<Integer, Integer> bills){
         for (int key : bills.keySet()) {
             for (int i = 0; i < bills.get(key); i++) {

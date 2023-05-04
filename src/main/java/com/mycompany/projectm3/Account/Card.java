@@ -57,41 +57,34 @@ public class Card {
         }
     }
 
+    /**
+     * Returns the id of the account that the card is linked to
+     * @return the id of the account that the card is linked to
+     */
     public int getAcc_id() {
         return acc_id;
     }
 
-    /**
-     * Sets the security number of the card
-     * @param securityNumber
-     */
-    public void setSecurityNumber(int securityNumber){
-        this.securityNumber = securityNumber;
-    }
-
-    /**
-     * Sets the card number of the card
-     * @param cardNumber
-     */
-    public void setCardNumber(long cardNumber) {
-        this.cardNumber = cardNumber;
-    }
 
     /**
      * Sets the PIN of the card
-     * @param PIN
+     * @param PIN the PIN that the user wants to use
      */
     public void setPIN(int PIN) {
         this.PIN = PIN;
     }
 
+    /**
+     * Returns the security number of the card
+     * @return the security number of the card
+     */
     public int getSecurityNumber() {
         return securityNumber;
     }
 
     /**
      * Sets the validity of the card
-     * @param valid
+     * @param valid true if the card is valid, false otherwise
      */
     public void setValid(boolean valid) {
         this.valid = this.isValid();
@@ -99,7 +92,7 @@ public class Card {
 
     /**
      * Sets the expiration date of the card
-     * @param expirationDate
+     * @param expirationDate the expiration date of the card
      */
     public void setExpirationDate(Date expirationDate) {
         this.expirationDate = expirationDate;
@@ -115,6 +108,10 @@ public class Card {
         return this.valid;
     }
 
+    /**
+     * Returns the expiration date of the card
+     * @return the expiration date of the card
+     */
     public Date getExpirationDate() {
         return expirationDate;
     }
@@ -153,14 +150,26 @@ public class Card {
         return String.format("%d,%d,%s,%d,%d", this.cardNumber, this.securityNumber, DateCalculator.timeToString(this.expirationDate), this.PIN, this.account.getAccountId());
     }
 
+    /**
+     * Returns the account that the card is linked to
+     * @return the account that the card is linked to
+     */
     public Account getAccount() {
         return account;
     }
 
+    /**
+     * Returns the PIN of the card
+     * @return the PIN of the card
+     */
     public int getPIN() {
         return PIN;
     }
 
+    /**
+     * Sets the account that the card is linked to
+     * @param account the account that the card is linked to
+     */
     public void setAccount(CurrentAccount account) {
         this.account = account;
     }

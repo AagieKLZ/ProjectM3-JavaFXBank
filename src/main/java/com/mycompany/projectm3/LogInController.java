@@ -47,6 +47,10 @@ public class LogInController implements Initializable {
         // TODO
     }
 
+    /**
+     * Logs in the user
+     * @throws IOException if the fxml file is not found
+     */
     @FXML
     public void logIn() throws IOException{
         System.out.println("Log in");
@@ -56,7 +60,7 @@ public class LogInController implements Initializable {
             errLabel.setText("Usuario bloqueado");
             return;
         }
-        if (username.getText() == "" || username.getText() == ""){
+        if (username.getText().equals("") || username.getText().equals("")){
             errLabel.setText("Usuario o contraseña no válidos");
         } else {
             User user = App.atm.userManager.LogIn(username.getText(), password.getText());
@@ -83,12 +87,20 @@ public class LogInController implements Initializable {
             Navigator.gotoPage("MainATM", signupBtn);
         }
     }
-    
+
+    /**
+     * Goes back to the welcome page
+     * @throws IOException if the fxml file is not found
+     */
     @FXML
     protected void gotoHome() throws IOException{
         Navigator.gotoPage("welcome", backBtn);
     }
-    
+
+    /**
+     * Goes to the sign up page
+     * @throws IOException if the fxml file is not found
+     */
     @FXML
     protected void gotoSignup() throws IOException{
         Navigator.gotoPage("SignUp", signupBtn);

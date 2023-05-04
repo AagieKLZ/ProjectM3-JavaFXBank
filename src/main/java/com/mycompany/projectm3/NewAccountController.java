@@ -90,10 +90,17 @@ public class NewAccountController implements Initializable {
         PINInput.setVisible(false);
     }
 
+    /**
+     * Goes to the home page
+     * @throws IOException if the fxml file is not found
+     */
     public void gotoHome() throws IOException {
         App.setRoot("MainATM");
     }
 
+    /**
+     * Creates a new account
+     */
     public void submit() {
         String accTypeValue = accType.getValue();
         if (accTypeValue == null) {

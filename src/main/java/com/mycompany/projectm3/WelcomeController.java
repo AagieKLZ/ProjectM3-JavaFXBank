@@ -27,23 +27,40 @@ public class WelcomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }
-    
+
+    /**
+     * Loads the fxml file and sets the scene
+     * @param fxml
+     * @return
+     * @throws IOException
+     */
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
-    
-    
+
+    /**
+     * Goes to the login page
+     * @throws IOException if the fxml file is not found
+     */
     @FXML
     protected void gotoLogin() throws IOException{
         Navigator.gotoPage("LogIn", loginLink);
     }
-    
+
+    /**
+     * Goes to the signup page
+     * @throws IOException if the fxml file is not found
+     */
     @FXML
     protected void gotoSignup() throws IOException{
         Navigator.gotoPage("SignUp", signupLink);
     }
-    
+
+    /**
+     * Goes to the login with card page
+     * @throws IOException if the fxml file is not found
+     */
     @FXML
     protected void gotoCard() throws IOException{
         Navigator.gotoPage("InsertCard", cardLink);

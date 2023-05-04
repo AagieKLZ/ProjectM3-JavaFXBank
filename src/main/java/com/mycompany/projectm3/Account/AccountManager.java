@@ -60,18 +60,26 @@ public class AccountManager {
     }
 
     /**
-     * Returns the account list
-     * @return ArrayList<Account>
+     * Saves the account list to a file
      */
     public void saveToFile(){
         AccountFileReader accountFileReader = new AccountFileReader();
         accountFileReader.writeLines(this.accountList);
     }
 
+    /**
+     * Returns the account list
+     * @return ArrayList accountList
+     */
     public ArrayList<Account> getAccountList() {
         return accountList;
     }
 
+    /**
+     * Returns an account by its id
+     * @param accNumber account id
+     * @return Account object or null if the account does not exist
+     */
     public Account getAccountById(long accNumber){
         for (Account account : this.accountList){
             if (account.getAccNumber() == accNumber){

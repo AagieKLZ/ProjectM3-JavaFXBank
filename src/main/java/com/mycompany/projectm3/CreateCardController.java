@@ -74,11 +74,20 @@ public class CreateCardController implements Initializable {
         expDate.setText(card.getExpirationDate().toString());
     }
 
+    /**
+     * Formats the card number to be displayed in the card field
+     * @param cardNumber The card number to be formatted
+     * @return The formatted card number
+     */
     private String formatCardNumber(long cardNumber){
         String cardNumberStr = Long.toString(cardNumber);
         return cardNumberStr.substring(0, 4) + " " + cardNumberStr.substring(4, 8) + " " + cardNumberStr.substring(8, 12) + " " + cardNumberStr.substring(12, 16);
     }
 
+    /**
+     * Submits the card creation
+     * @throws IOException If the page cannot be loaded
+     */
     public void submit() throws IOException{
         if (pinField.getText().length() == 4 && accSelect.getValue() != null){
             this.card.setPIN(Integer.parseInt(pinField.getText()));
@@ -91,6 +100,10 @@ public class CreateCardController implements Initializable {
 
     }
 
+    /**
+     * Goes back to the home page
+     * @throws IOException If the page cannot be loaded
+     */
     public void gotoHome() throws IOException {
         Navigator.gotoPage("MainATM", backBtn);
     }

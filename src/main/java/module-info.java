@@ -9,8 +9,6 @@ module com.mycompany.projectm3 {
     opens com.mycompany.projectm3.FileReader to javafx.fxml;
     exports com.mycompany.projectm3.Account;
     opens com.mycompany.projectm3.Account to javafx.fxml;
-    exports com.mycompany.projectm3.Register;
-    opens com.mycompany.projectm3.Register to javafx.fxml;
     exports com.mycompany.projectm3.User;
     opens com.mycompany.projectm3.User to javafx.fxml;
     exports com.mycompany.projectm3.lib;

@@ -46,6 +46,9 @@ public class ProfileController implements Initializable {
     @FXML
     HBox newRow;
 
+    /**
+     * Initializes the controller class.
+     */
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
         User user = App.atm.getUser();
@@ -62,6 +65,9 @@ public class ProfileController implements Initializable {
         });
     }
 
+    /**
+     * Modifies the user's data and saves it to the file before returning to the main menu
+     */
     public void submit(){
         User user = App.atm.getUser();
         if (changePw.isSelected()){
@@ -88,6 +94,9 @@ public class ProfileController implements Initializable {
         App.atm.userManager.saveUsers();
     }
 
+    /**
+     * Deletes the user and returns to the welcome screen
+     */
     public void delete(){
         User user = App.atm.getUser();
         if (pwField.getText().equals(user.getPassword())){
@@ -103,6 +112,10 @@ public class ProfileController implements Initializable {
     }
 
 
+    /**
+     * Goes to the home page
+     * @throws IOException if the fxml file is not found
+     */
     public void gotoHome() throws IOException {
         Navigator.gotoPage("MainATM", backBtn);
     }

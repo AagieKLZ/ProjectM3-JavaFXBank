@@ -6,6 +6,7 @@ package com.mycompany.projectm3;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import com.mycompany.projectm3.Account.Account;
@@ -53,7 +54,7 @@ public class InsertController implements Initializable {
     @FXML
     Label balanceLabel;
     /**
-     * Initializes the controller class.
+     * Initializes the controller class. Creates the spinners and sets the default values to 0
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -86,16 +87,28 @@ public class InsertController implements Initializable {
         field200.getValueFactory().setValue(0);
     }
 
+    /**
+     * Updates the balance label with the total amount of money to be inserted
+     * @return the total amount of money to be inserted
+     */
     public int updateBalance(){
         int total = field10.getValue() * 10 + field20.getValue() * 20 + field50.getValue() * 50 + field100.getValue() * 100 + field200.getValue() * 200;
         balanceLabel.setText(String.valueOf(total) + "€");
         return total;
     }
 
+    /**
+     * Goes back to the main ATM page
+     * @throws IOException if the page doesn't exist
+     */
     public void gotoHome() throws IOException {
         Navigator.gotoPage("MainATM", backBtn);
     }
 
+    /**
+     * Inserts the money into the ATM and the account
+     * @throws IOException if the page doesn't exist
+     */
     public void submit() throws IOException {
         if (updateBalance() == 0){
             errLabel.setText("La cantidad no puede ser 0");
@@ -108,6 +121,13 @@ public class InsertController implements Initializable {
         Operation opp = App.atm.oppManager.createOperation("insert", null, acc, updateBalance());
         //App.atm.accManager.getAccountById(accSelect.getValue()).addOperation(opp);
         App.atm.accManager.getAccountById(accSelect.getValue()).addMoney(updateBalance());
+        HashMap<Integer, Integer> bills = new HashMap<>();
+        bills.put(10, field10.getValue());
+        bills.put(20, field20.getValue());
+        bills.put(50, field50.getValue());
+        bills.put(100, field100.getValue());
+        bills.put(200, field200.getValue());
+        App.atm.billManager.insertBills(bills);
         Navigator.gotoPage("MainATM", backBtn);
     }
 

@@ -43,18 +43,30 @@ public class SignUpController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
+    /**
+     * Goes to the home page
+     * @throws IOException if the fxml file is not found
+     */
     @FXML
     private void gotoHome() throws IOException {
         Navigator.gotoPage("welcome", backBtn);
     }
 
+    /**
+     * Goes to the login page
+     * @throws IOException if the fxml file is not found
+     */
     @FXML
     private void gotoLogin() throws IOException {
         Navigator.gotoPage("LogIn", loginBtn);
     }
 
+    /**
+     * Signs up the user
+     * @throws IOException if the fxml file is not found
+     */
     @FXML
     private void signUp() throws IOException{
         String name = nameInput.getText();

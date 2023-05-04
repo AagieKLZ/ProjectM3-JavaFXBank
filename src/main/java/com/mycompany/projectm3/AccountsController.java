@@ -27,7 +27,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Paint;
 
 /**
- * FXML Controller class
+ * FXML Controller class for the accounts view
  *
  * @author alumne
  */
@@ -77,6 +77,11 @@ public class AccountsController implements Initializable {
         String selectedColor="#decf00";
     }
 
+    /**
+     * Creates a VBox with the account info
+     * @param acc Account to be displayed
+     * @return VBox
+     */
     private VBox createAccBox(Account acc){
         String accType = acc instanceof SavingAccount ? "Ahorro" : "Corriente";
         long accNumber = acc.getAccNumber();
@@ -132,10 +137,19 @@ public class AccountsController implements Initializable {
         return accBox;
     }
 
+    /**
+     * Formats the account number to display it in the view
+     * @throws IOException if the page is not found
+     */
     public void gotoHome() throws IOException {
         Navigator.gotoPage("MainATM", backBtn);
     }
 
+    /**
+     * Formats the account number to display it in the view
+     * @param card Card to be displayed
+     * @return VBox
+     */
     private VBox createCardBox(Card card){
         VBox cardBox = new VBox();
         cardBox.setBackground(new Background(new BackgroundFill(javafx.scene.paint.Color.web("#001370"), new CornerRadii(5), null)));
@@ -149,6 +163,11 @@ public class AccountsController implements Initializable {
         return cardBox;
     }
 
+    /**
+     * Formats the operation to display it in the view
+     * @param opp Operation to be displayed
+     * @return HBox
+     */
     private HBox createOppBox(Operation opp){
         HBox oppLine = new HBox();
         Label oppType = new Label(opp.getOppType().equals("transfer") ? "Transferencia" : (opp.getOppType().equals("withdraw") ? "Extracción" : "Ingreso"));
@@ -174,6 +193,11 @@ public class AccountsController implements Initializable {
         return oppLine;
     }
 
+    /**
+     * Formats the account number to display it in the view
+     * @param input Account number to be formatted
+     * @return String
+     */
     private String formatAccNumber(String input) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < input.length(); i++) {

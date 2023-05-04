@@ -38,6 +38,11 @@ public class SecretMenuController implements Initializable {
     @FXML
     Button saveBtn;
 
+    /**
+     * Initializes the controller class.
+     * @param url url
+     * @param rb resource bundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         SpinnerValueFactory<Integer> valueFactory10 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000, 0, 1);
@@ -66,15 +71,26 @@ public class SecretMenuController implements Initializable {
         field200.getValueFactory().setValue(bills.get(200));
     }
 
+    /**
+     * Updates the balance label when a spinner value changes.
+     */
     private void updateBalance(){
         int balance = field10.getValue() * 10 + field20.getValue() * 20 + field50.getValue() * 50 + field100.getValue() * 100 + field200.getValue() * 200;
         balanceLabel.setText(String.valueOf(balance) + "€");
     }
 
+    /**
+     * Goes to the home page
+     * @throws IOException if the fxml file is not found
+     */
     public void gotoHome() throws Exception{
         Navigator.gotoPage("MainATM", backBtn);
     }
 
+    /**
+     * Saves the bills
+     * @throws IOException if the fxml file is not found
+     */
     public void save() throws IOException {
         HashMap<Integer, Integer> bills = new HashMap<>();
         bills.put(10, field10.getValue());
