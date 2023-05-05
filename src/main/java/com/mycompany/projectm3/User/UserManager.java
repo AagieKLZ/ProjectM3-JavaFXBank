@@ -53,12 +53,12 @@ public class UserManager {
 
     /**
      * Finds a user by its name
-     * @param email
-     * @return User if found, null otherwise
+     * @param email of the user
+     * @return true if the user is found, false otherwise
      */
     public boolean findUser(String email){
-        for (int i = 0; i < this.userList.size(); i++){
-            if (email.equals(this.userList.get(i).getEmail())){
+        for (User user : this.userList) {
+            if (email.equals(user.getEmail())) {
                 return true;
             }
         }
@@ -97,15 +97,6 @@ public class UserManager {
      */
     public void lockUser(User user){
         user.lock();
-        saveUsers();
-    }
-
-    /**
-     * Unlocks a user.
-     * @param user
-     */
-    public void unlockUser(User user){
-        user.unlock();
         saveUsers();
     }
 

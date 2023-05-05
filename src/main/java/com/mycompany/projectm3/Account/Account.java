@@ -83,7 +83,6 @@ public class Account {
      * @return the account movements
      */
     public ArrayList<Operation> getOperations(){
-        /* TODO */
         return this.operations;
     }
 
@@ -116,8 +115,8 @@ public class Account {
 
     /**
      * Extracts money from the account
-     * @param amount
-     * @return
+     * @param amount the amount to extract
+     * @return the account balance
      */
     public float extractMoney(float amount){
         this.balance = this.balance - amount;
@@ -138,6 +137,14 @@ public class Account {
      */
     public void setOwner(User owner){
         this.owner = owner;
+    }
+
+    /**
+     * Returns the account type
+     * @return the account type
+     */
+    public String getAccType() {
+        return accType;
     }
 
     /**

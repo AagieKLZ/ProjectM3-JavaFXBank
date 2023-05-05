@@ -10,8 +10,6 @@ import java.util.ArrayList;
  * Reads and writes from the accounts.csv file
  */
 public class AccountFileReader extends FileReader {
-    private final String path = "accounts.csv";
-
     /**
      * Constructor
      */

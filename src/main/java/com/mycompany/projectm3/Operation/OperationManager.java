@@ -40,20 +40,6 @@ public class OperationManager {
         return opp;
     }
 
-    /**
-     * Gets the operations of the given account
-     * @param account
-     * @return List of operations
-     */
-    public ArrayList<Operation> getOperations(Account account){
-        ArrayList<Operation> opps = new ArrayList<Operation>();
-        for (Operation opp : this.operations){
-            if (opp.belongs(account)){
-                opps.add(opp);
-            }
-        }
-        return opps;
-    }
 
     /**
      * Gets all the operations

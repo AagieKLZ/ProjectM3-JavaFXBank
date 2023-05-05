@@ -1,6 +1,6 @@
 package com.mycompany.projectm3.FileReader;
 
-import com.mycompany.projectm3.Account.Card;
+import com.mycompany.projectm3.Cards.Card;
 import com.mycompany.projectm3.lib.DateCalculator;
 
 import java.util.ArrayList;
@@ -10,8 +10,6 @@ import java.util.Date;
  * Reads and writes from the cards.csv file
  */
 public class CardFileReader extends FileReader{
-    private final String path = "cards.csv";
-
     /**
      * Constructor
      */

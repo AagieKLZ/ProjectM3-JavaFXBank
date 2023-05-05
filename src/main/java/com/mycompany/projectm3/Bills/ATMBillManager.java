@@ -9,7 +9,6 @@ import java.util.HashMap;
  */
 public class ATMBillManager {
     private HashMap<Integer, Integer> bills;
-    private int max_available;
 
     /**
      * Constructor for ATMBillManager. Reads the bills from the file and calculates the max available. If the max available is 0, it sets the default bills.
@@ -19,15 +18,19 @@ public class ATMBillManager {
         this.bills = billFileReader.readLines();
         if (this.bills == null){
             this.bills = new HashMap<>();
-        }
-        this.max_available = calcMaxAvailable();
-        if (this.max_available == 0){
             bills.put(10, 45);
             bills.put(20, 50);
             bills.put(50, 30);
             bills.put(100, 15);
             bills.put(200, 5);
-            this.max_available = calcMaxAvailable();
+        }
+        int max_available = calcMaxAvailable();
+        if (max_available == 0){
+            bills.put(10, 45);
+            bills.put(20, 50);
+            bills.put(50, 30);
+            bills.put(100, 15);
+            bills.put(200, 5);
         }
     }
 
@@ -57,29 +60,24 @@ public class ATMBillManager {
 
     /**
      * Extracts a bill from the ATM
-     * @param amount
-     * @return number of bills or -1 if the amount is not available
+     * @param amount Amount of the bill
      */
-    public int extractBill(int amount){
+    public void extractBill(int amount){
         if (bills.get(amount) == 0 || !bills.containsKey(amount)){
-            return -1;
+            return ;
         }
         bills.put(amount, bills.get(amount) - 1);
-        return bills.get(amount);
-
     }
 
     /**
      * Adds a bill to the ATM
-     * @param amount
-     * @return number of bills or -1 if the amount is not available
+     * @param amount Amount of the bill
      */
-    public int addBill(int amount){
+    public void addBill(int amount){
         if (!bills.containsKey(amount)){
-            return -1;
+            return;
         }
         bills.put(amount, bills.get(amount) + 1);
-        return bills.get(amount);
     }
 
     /**

@@ -13,14 +13,12 @@ import java.util.ArrayList;
  */
 public class AccountManager {
     private ArrayList<Account> accountList;
-    private AccountFileReader accountFileReader;
 
     /**
      * Constructor
      */
     public AccountManager() {
-        this.accountFileReader = new AccountFileReader();
-        this.accountList = this.accountFileReader.readLines();
+        this.accountList = new AccountFileReader().readLines();
         if (this.accountList == null){
             this.accountList = new ArrayList<>();
         }

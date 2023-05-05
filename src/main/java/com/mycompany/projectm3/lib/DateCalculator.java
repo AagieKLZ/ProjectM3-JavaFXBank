@@ -42,7 +42,7 @@ public class DateCalculator {
 
     /**
      * Converts a string to a date
-     * @param date
+     * @param date String with the date in the format YYYY-MM-DD
      * @return Date with the date from the string
      */
     public static Date stringToDate(String date) {

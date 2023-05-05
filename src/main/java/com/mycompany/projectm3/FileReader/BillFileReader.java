@@ -7,8 +7,6 @@ import java.util.HashMap;
  * Reads and writes from the bills.csv file
  */
 public class BillFileReader extends FileReader{
-    private String path = "../DB/bills.csv";
-
     /**
      * Constructor
      */

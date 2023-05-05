@@ -17,4 +17,8 @@ module com.mycompany.projectm3 {
     opens com.mycompany.projectm3.Operation to javafx.fxml;
     exports com.mycompany.projectm3.Bills;
     opens com.mycompany.projectm3.Bills to javafx.fxml;
+    exports com.mycompany.projectm3.Controllers;
+    opens com.mycompany.projectm3.Controllers to javafx.fxml;
+    exports com.mycompany.projectm3.Cards;
+    opens com.mycompany.projectm3.Cards to javafx.fxml;
 }

@@ -2,6 +2,8 @@ package com.mycompany.projectm3.ATM;
 
 import com.mycompany.projectm3.Account.*;
 import com.mycompany.projectm3.Bills.ATMBillManager;
+import com.mycompany.projectm3.Cards.Card;
+import com.mycompany.projectm3.Cards.CardManager;
 import com.mycompany.projectm3.Operation.Operation;
 import com.mycompany.projectm3.Operation.OperationManager;
 import com.mycompany.projectm3.User.User;

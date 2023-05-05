@@ -57,24 +57,4 @@ abstract class FileReader {
             System.out.println("Error writing to file");
         }
     }
-
-    /**
-     * Checks if the file exists
-     * @return true if the file exists, false otherwise
-     */
-    private boolean fileExists(){
-        return this.file.exists();
-    }
-
-    /**
-     * Creates a new file if it does not exist
-     */
-    private void createFile(){
-        try{
-            this.file.createNewFile();
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-            System.out.println("File already exists");
-        }
-    }
 }

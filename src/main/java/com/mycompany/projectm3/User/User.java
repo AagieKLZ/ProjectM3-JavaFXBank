@@ -49,19 +49,6 @@ public class User {
         this.accounts.add(acc);
     }
 
-    /**
-     * Closes an account of the user.
-     * @param id
-     */
-    public void closeAccount(int id){
-        boolean exists = false;
-        for (int i = 0; i < this.accounts.size(); i++){
-            if (this.accounts.get(i).getAccountId() == id){
-                this.accounts.remove(i);
-                break;
-            }
-        }
-    }
 
     /**
      * Locks the user access.

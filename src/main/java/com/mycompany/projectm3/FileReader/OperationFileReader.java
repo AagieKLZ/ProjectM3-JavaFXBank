@@ -11,8 +11,6 @@ import java.util.ArrayList;
  * Reads and writes from the operations.csv file
  */
 public class OperationFileReader extends FileReader {
-    private final String path = "operations.csv";
-
     /**
      * Constructor
      */

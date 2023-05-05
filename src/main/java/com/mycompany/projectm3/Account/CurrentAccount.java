@@ -1,4 +1,5 @@
 package com.mycompany.projectm3.Account;
+import com.mycompany.projectm3.Cards.Card;
 import com.mycompany.projectm3.User.User;
 
 import java.util.ArrayList;
