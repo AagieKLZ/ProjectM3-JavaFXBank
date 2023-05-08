@@ -48,7 +48,9 @@ public class TransferController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         for (Account acc : App.atm.getUser().getAccounts()){
-            accSelect.getItems().add(acc.getAccNumber());
+            if (acc.getAccType() == "Current") {
+                accSelect.getItems().add(acc.getAccNumber());
+            }
         }
     }
 
