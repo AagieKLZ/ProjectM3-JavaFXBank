@@ -47,6 +47,7 @@ public class UserManager {
         User user = new User(email, name, userList.size());
         user.setPassword(password);
         this.userList.add(user);
+        this.attempts.put(email, 5);
         saveUsers();
         return user;
     }
